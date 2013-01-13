@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<qnx xmlns="http://www.qnx.com/schemas/application/1.0">
+    <id>com.kde.WikiReader</id>
+    <name>WikiReader</name>
+    <versionNumber>1.0.0</versionNumber>
+    <description>Wikipedia reader</description>
+    <initialWindow>
+        <systemChrome>standard</systemChrome>
+        <transparent>false</transparent>
+        <autoOrients>true</autoOrients>
+        <aspectRatio>portrait</aspectRatio>
+    </initialWindow>
+    <copyright>COPYRIGHT</copyright>
+
+    <action system="true">run_native</action>
+    <action system="true">access_internet</action>
+
+    <asset path="%SRC_DIR%" type="Qnx/Elf" entry="true">wikireader</asset>
+
+</qnx>
