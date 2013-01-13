@@ -31,7 +31,6 @@
 #include <QDebug>
 
 WikiModel::WikiModel()
-    : m_connectionNetworkReply(0)
     , m_searchNetworkReply(0)
     , m_searchString("")
     , m_url("")
@@ -41,10 +40,6 @@ WikiModel::WikiModel()
     , m_language(0)
     , m_urlPrefix("http://en.")
 {
-    //dont give a proper url. we dont want its data to be accessed.
-    //we just want to initiate connection.
-    m_connectionNetworkReply = m_networkAccessManager.get(QNetworkRequest(QUrl("http://foo.bar")));
-
     m_timer.setSingleShot(true);
     m_timer.setInterval(1000);
 
@@ -89,11 +84,6 @@ WikiModel::~WikiModel()
     file.close();
 
     m_timer.stop();
-
-    if (m_connectionNetworkReply) {
-        delete m_connectionNetworkReply;
-        m_connectionNetworkReply = 0;
-    }
 
     if (m_searchNetworkReply) {
         delete m_searchNetworkReply;

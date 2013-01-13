@@ -89,7 +89,6 @@ private:
 
     QNetworkAccessManager m_networkAccessManager;
     QNetworkReply* m_searchNetworkReply;
-    QNetworkReply* m_connectionNetworkReply;
 
     QByteArray m_xmlResult;
     QTimer m_timer;
