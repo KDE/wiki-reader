@@ -94,6 +94,7 @@ WikiModel::~WikiModel()
 
     if (m_resultsMap) {
         m_resultsMap->clear();
+
         delete m_resultsMap;
         m_resultsMap = 0;
     }
@@ -344,7 +345,7 @@ void WikiModel::httpReadyRead()
     if (m_searchString.isEmpty())
         return;
 
-    m_xmlResult += m_searchNetworkReply->readAll();
+    m_searchResultData += m_searchNetworkReply->readAll();
 }
 
 void WikiModel::httpFinished()
@@ -364,7 +365,7 @@ void WikiModel::httpFinished()
     if (searchNetworkReplyError != QNetworkReply::NoError) {
         m_searchNetworkReply->deleteLater();
         m_searchNetworkReply = 0;
-        m_xmlResult.clear();
+        m_searchResultData.clear();
 
         if (searchNetworkReplyError == QNetworkReply::OperationCanceledError) {
             m_timer.start();
@@ -378,7 +379,7 @@ void WikiModel::httpFinished()
     QStringList final;
 
     QDomDocument domDocument;
-    if (domDocument.setContent(m_xmlResult, true)) {
+    if (domDocument.setContent(m_searchResultData, true)) {
         QDomNodeList list = domDocument.elementsByTagName("p");
 
         for (int i = 0; i < list.count(); ++i) {
@@ -392,7 +393,7 @@ void WikiModel::httpFinished()
         }   
     }
 
-    m_xmlResult.clear();
+    m_searchResultData.clear();
 
     m_searchNetworkReply->deleteLater();
     m_searchNetworkReply = 0;

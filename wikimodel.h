@@ -21,7 +21,7 @@
 #define MODEL_H
 
 #include <QTimer>
-#include <QAbstractItemModel>
+#include <QAbstractListModel>
 #include <QStringList>
 #include <QNetworkAccessManager>
 
@@ -88,7 +88,7 @@ private:
     QNetworkAccessManager m_networkAccessManager;
     QNetworkReply* m_searchNetworkReply;
 
-    QByteArray m_xmlResult;
+    QByteArray m_searchResultData;
     QTimer m_timer;
 
     QVariantMap* m_resultsMap;
