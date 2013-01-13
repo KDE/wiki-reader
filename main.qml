@@ -220,7 +220,7 @@ Page {
                         id: stringMA
                         anchors.fill: parent
                         onReleased: {
-                            if (title == "Search in Google.com") {
+                            if (title == "Search on google.com") {
                                 wikiModel.searchGoogle(searchbar.text);
                             } else {
                                 wikiModel.showArticle(title);
