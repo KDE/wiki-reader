@@ -72,7 +72,7 @@ WikiModel::WikiModel()
 
 WikiModel::~WikiModel()
 {
-    QFile file("cw.config");
+    QFile file("wikireader.conf");
     if (file.open( QIODevice::WriteOnly)) {
         QDataStream stream(&file);
         stream << 1; //config file version
