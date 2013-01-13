@@ -141,14 +141,6 @@ int WikiModel::setSearchString(const QString& searchString)
         setBusy(true);
     }
 
-    restartTimer();
-}
-
-void WikiModel::restartTimer()
-{
-    if (m_timer.isActive())
-        m_timer.stop();
-
     m_timer.start();
 }
 
@@ -395,7 +387,7 @@ void WikiModel::httpFinished()
         m_xmlResult.clear();
 
         if (searchNetworkReplyError == QNetworkReply::OperationCanceledError) {
-            restartTimer();
+            m_timer.start();
             return;
         } else {
             emit operationComplete(m_searchString, QStringList(), searchNetworkReplyError);
