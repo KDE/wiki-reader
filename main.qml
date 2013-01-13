@@ -221,7 +221,7 @@ Page {
                         anchors.fill: parent
                         onReleased: {
                             if (title == "Search in Google.com") {
-                                wikiModel.searchInternet(searchbar.text);
+                                wikiModel.searchGoogle(searchbar.text);
                             } else {
                                 wikiModel.showArticle(title);
                             }

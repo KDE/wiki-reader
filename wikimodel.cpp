@@ -195,7 +195,7 @@ void WikiModel::shareArticle(const QString& url)
     QDesktopServices::openUrl(QUrl(urlString));
 }
 
-void WikiModel::searchInternet(const QString& string)
+void WikiModel::searchGoogle(const QString& string)
 {
     QString trimmedString = string.trimmed();
 

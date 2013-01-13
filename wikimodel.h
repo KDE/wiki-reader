@@ -60,7 +60,7 @@ public:
 
     Q_INVOKABLE int setSearchString(const QString& searchString);
     Q_INVOKABLE void showArticle(const QString& title);
-    Q_INVOKABLE void searchInternet(const QString& str);
+    Q_INVOKABLE void searchGoogle(const QString& str);
     Q_INVOKABLE void shareArticle(const QString& url);
 
 public Q_SLOTS:
