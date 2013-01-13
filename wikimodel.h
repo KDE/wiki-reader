@@ -63,8 +63,6 @@ public:
     Q_INVOKABLE void searchInternet(const QString& str);
     Q_INVOKABLE void shareArticle(const QString& url);
 
-    void search(const QString& searchString);
-
 public Q_SLOTS:
 
     void handleSearchComplete(const QString& searchString, QStringList,
@@ -84,6 +82,7 @@ private Q_SLOTS:
     void httpFinished();
     void httpReadyRead();
     void timerTimeout();
+    void restartTimer();
 
 private:
 

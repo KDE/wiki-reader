@@ -31,7 +31,7 @@
 #include <QDebug>
 
 WikiModel::WikiModel()
-    , m_searchNetworkReply(0)
+    : m_searchNetworkReply(0)
     , m_searchString("")
     , m_url("")
     , m_busy(false)
@@ -49,7 +49,7 @@ WikiModel::WikiModel()
     setRoleNames(roles);
     roles.clear();
 
-    QString fi("cw.config");
+    QString fi("wikireader.conf");
     QFile file(fi.toLower());
 
     if (file.exists() && file.open(QIODevice::ReadOnly)) {
@@ -141,15 +141,14 @@ int WikiModel::setSearchString(const QString& searchString)
         setBusy(true);
     }
 
-    search(m_searchString);
+    restartTimer();
 }
 
-void WikiModel::search(const QString& searchString)
+void WikiModel::restartTimer()
 {
     if (m_timer.isActive())
         m_timer.stop();
 
-    m_searchString = searchString;
     m_timer.start();
 }
 
@@ -396,7 +395,7 @@ void WikiModel::httpFinished()
         m_xmlResult.clear();
 
         if (searchNetworkReplyError == QNetworkReply::OperationCanceledError) {
-            search(m_searchString);
+            restartTimer();
             return;
         } else {
             emit operationComplete(m_searchString, QStringList(), searchNetworkReplyError);
