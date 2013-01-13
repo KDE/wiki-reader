@@ -38,7 +38,7 @@ WikiModel::WikiModel()
     , m_resultsMap(new QVariantMap())
     , m_errorString("")
     , m_language(0)
-    , m_urlPrefix("http://en.")
+    , m_wikiUrlPrefix("http://en.")
 {
     m_timer.setSingleShot(true);
     m_timer.setInterval(1000);
@@ -183,7 +183,7 @@ void WikiModel::showArticle(const QString& title)
     // Convert title to url and set it
 
     QString urlString = title;
-    urlString = m_urlPrefix + "m.wikipedia.org/wiki/" + urlString.replace(' ', '_');
+    urlString = m_wikiUrlPrefix + "m.wikipedia.org/wiki/" + urlString.replace(' ', '_');
 
     setUrl(urlString);
 }
@@ -295,7 +295,7 @@ int WikiModel::language() const
 void WikiModel::setLanguage(int language)
 {
     m_language = language;
-    m_urlPrefix = languageToString();
+    m_wikiUrlPrefix = languageToString();
 
     //clear the history so that previous language results are not stored.
     if (m_resultsMap)
@@ -349,7 +349,7 @@ void WikiModel::timerTimeout()
     if (m_searchString.isEmpty())
         return;
 
-    QString searchString = m_urlPrefix + "wikipedia.org/w/api.php?action=query&list=search&format=xml&srwhat=text&srlimit=20&srsearch=";
+    QString searchString = m_wikiUrlPrefix + "wikipedia.org/w/api.php?action=query&list=search&format=xml&srwhat=text&srlimit=20&srsearch=";
 
     searchString.append(QUrl::toPercentEncoding(m_searchString, "/?&=:+"));
 

@@ -97,7 +97,7 @@ private:
     QString m_searchString;
     QString m_url;
     QString m_errorString;
-    QString m_urlPrefix;
+    QString m_wikiUrlPrefix;
 
     int m_language;
     bool m_busy;
