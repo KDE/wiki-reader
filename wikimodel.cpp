@@ -111,11 +111,9 @@ QVariant WikiModel::data(const QModelIndex& index, int role) const
 
     if (role == 0) {
         return QVariant(m_searchResults[index.row()]);
-    } else if (role == 2) {
     }
-    else {
-        return QVariant();
-    }
+
+    return QVariant();
 }
 
 int WikiModel::setSearchString(const QString& searchString)
