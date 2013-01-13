@@ -189,26 +189,9 @@ void WikiModel::showArticle(const QString& title)
 
 void WikiModel::shareArticle(const QString& url)
 {
-    //extract the title name if the article being shared is of wikipedia origin.
-    
-    QString modifiedUrl;
+    QString urlString = url;
+    urlString = "mailto:?subject=Check this article&body=I found an interesting article. Check it out.\n "+ urlString;
 
-    if (url.contains("wikipedia.org")) {
-        //its a wikipedia site. fetch title now.
-        QStringList list = url.split("&");
-        foreach (QString string, list) {
-            if (string.contains("title=")) {
-                modifiedUrl = "http://en.wikipedia.org/wiki/" + string.mid(6); //6-stands for 'title='
-                break;
-             } else {
-                modifiedUrl = url;
-             }
-        }
-    } else {
-        modifiedUrl = url;
-    }
-
-    QString urlString = "mailto:?subject=Check this article&body=I found an interesting article. Check it out.\n "+ modifiedUrl;
     QDesktopServices::openUrl(QUrl(urlString));
 }
 
