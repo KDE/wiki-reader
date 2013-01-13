@@ -145,7 +145,7 @@ Page {
                 // imageSource: "asset:///images/progress.png"
                 // width: 30
                 // height: 30
-                // visible: wikiModel.p_busy ? true : false
+                // visible: wikiModel.busy ? true : false
                 // PropertyAnimation on rotation { to: 360; duration: 1000; loops: Animation.Infinite}
             // }
 
