@@ -180,36 +180,35 @@ void WikiModel::handleSearchComplete(const QString& searchString, QStringList li
 
 void WikiModel::showArticle(const QString& title)
 {
-    // Convert title to url and set it
-
+    // Convert title to url and set ita
+    
     QString urlString = title;
     urlString = m_wikiUrlPrefix + "m.wikipedia.org/wiki/" + urlString.replace(' ', '_');
-
     setUrl(urlString);
 }
 
 void WikiModel::shareArticle(const QString& url)
 {
     //extract the title name if the article being shared is of wikipedia origin.
-    QString newurl;
-    newurl = url;
+    
+    QString modifiedUrl;
 
     if (url.contains("wikipedia.org")) {
         //its a wikipedia site. fetch title now.
         QStringList list = url.split("&");
         foreach (QString string, list) {
             if (string.contains("title=")) {
-                newurl = "http://en.wikipedia.org/wiki/" + string.right(string.size() - 6); //6-stands for 'title='
+                modifiedUrl = "http://en.wikipedia.org/wiki/" + string.mid(6); //6-stands for 'title='
                 break;
              } else {
-                newurl = url;
+                modifiedUrl = url;
              }
         }
     } else {
-        newurl = url;
+        modifiedUrl = url;
     }
 
-    QString urlString = "mailto:?subject=Check this article&body=I found an interesting article. Check it out.\n "+ newurl;
+    QString urlString = "mailto:?subject=Check this article&body=I found an interesting article. Check it out.\n "+ modifiedUrl;
     QDesktopServices::openUrl(QUrl(urlString));
 }
 
