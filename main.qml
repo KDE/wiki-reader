@@ -214,12 +214,8 @@ Page {
 
                     Label {
                         text: ListItem.data
-                    }
 
-                    MouseArea {
-                        id: stringMA
-                        anchors.fill: parent
-                        onReleased: {
+                        onClicked: {
                             if (title == "Search on google.com") {
                                 wikiModel.searchGoogle(searchbar.text);
                             } else {
@@ -227,7 +223,7 @@ Page {
                             }
                         }
                     }
-                }
+                
             ]
 
             onSelectionChanged: {
