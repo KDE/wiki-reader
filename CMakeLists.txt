@@ -20,7 +20,6 @@
 cmake_minimum_required(VERSION 2.8.9)
 project(Wikireader)
 
-option(BUILD_WIKIREADER_DESKTOP "Build Wikireader for Desktop" OFF)
 option(BUILD_WIKIREADER_BLACKBERRY "Build Wikireader for Blackberry 10" ON)
 
 SET(CMAKE_CXX_FLAGS "-Wall -fPIC")
