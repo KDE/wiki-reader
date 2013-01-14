@@ -12,7 +12,6 @@
     </initialWindow>
     <author>Laszlo Papp</author>
     <category>core.media</author>
-    <copyright>COPYRIGHT</copyright>
 
     <action system="true">run_native</action>
     <action system="true">access_internet</action>
