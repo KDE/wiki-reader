@@ -98,7 +98,6 @@ private:
     QString m_errorString;
     QString m_wikiUrlPrefix;
 
-    int m_errorCode;
     int m_language;
     bool m_busy;
 };
