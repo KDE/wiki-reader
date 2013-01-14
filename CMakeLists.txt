@@ -1,13 +1,16 @@
 project(wikireader)
 cmake_minimum_required(VERSION 2.8.10)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 find_package(Qt4 4.8 REQUIRED)
+find_package(BBCascades REQUIRED)
 
 include_directories(
     ${QT_INCLUDES}
     ${CMAKE_CURRENT_BINARY_DIR} 
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${QNX_TARGET}/usr/include
+    ${BBCASCADES_INCLUDE_DIR}
 )
 
 set(WikiReader_SRCS
@@ -28,5 +31,5 @@ target_link_libraries(
     ${QT_QTGUI_LIBRARY}
     ${QT_QTDECLARATIVE_LIBRARY}
 
-    -lbbcascades
+    ${BBCASCADES_LIBRARY}
 )
