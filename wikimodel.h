@@ -81,7 +81,7 @@ private Q_SLOTS:
 
     void httpFinished();
     void httpReadyRead();
-    void timerTimeout();
+    void fetchUrl();
 
 private:
 

@@ -64,7 +64,7 @@ WikiModel::WikiModel()
 
     file.close();
 
-    connect(&m_timer, SIGNAL(timeout()), SLOT(timerTimeout()));
+    connect(&m_timer, SIGNAL(timeout()), SLOT(fetchUrl()));
 
     connect(this, SIGNAL(fetchFinished(const QString&, QStringList, int)),
             SLOT(handleSearchComplete(const QString&, QStringList, int)));
@@ -319,10 +319,10 @@ QString WikiModel::errorString() const
     return m_errorString;
 }
 
-void WikiModel::timerTimeout()
+void WikiModel::fetchUrl()
 {
     if (m_searchNetworkReply != NULL) {
-        // Some search is already in progress
+        // Search in progress so do not open request a new one
         m_searchNetworkReply->deleteLater();
         m_searchNetworkReply = 0;
     }   
@@ -331,7 +331,6 @@ void WikiModel::timerTimeout()
         return;
 
     QString searchString = m_wikiUrlPrefix + "wikipedia.org/w/api.php?action=query&list=search&format=xml&srwhat=text&srlimit=20&srsearch=";
-
     searchString.append(QUrl::toPercentEncoding(m_searchString, "/?&=:+"));
 
     m_searchNetworkReply = m_networkAccessManager.get(QNetworkRequest(QUrl(searchString)));
