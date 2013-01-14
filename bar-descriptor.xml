@@ -10,6 +10,8 @@
         <autoOrients>true</autoOrients>
         <aspectRatio>portrait</aspectRatio>
     </initialWindow>
+    <author>Laszlo Papp</author>
+    <category>core.media</author>
     <copyright>COPYRIGHT</copyright>
 
     <action system="true">run_native</action>
@@ -17,4 +19,5 @@
 
     <asset path="%SRC_DIR%" type="Qnx/Elf" entry="true">wikireader</asset>
 
+    <env var="LD_LIBRARY_PATH" value="app/native/lib"/>
 </qnx>
