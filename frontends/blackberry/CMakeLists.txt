@@ -18,9 +18,13 @@ set(WikiReader_SRCS
     wikimodel.cpp
 )
 
+QT4_ADD_RESOURCES(WikiReader_RCC_SRCS
+    wikireader.qrc
+)
+
 qt4_automoc(${WikiReader_SRCS})
 
-add_executable(wikireader ${WikiReader_SRCS})
+add_executable(wikireader ${WikiReader_SRCS} ${WikiReader_RCC_SRCS})
 
 target_link_libraries(
     wikireader
