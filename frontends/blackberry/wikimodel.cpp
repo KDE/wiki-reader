@@ -147,7 +147,7 @@ void WikiModel::handleSearchComplete(const QString& searchString, QStringList li
 {
     emit beginResetModel();
     m_searchResults.clear();
-    if (!list.count() == 1 || !list.at(0).size() != 0) {
+    if (!list.count() == 1 || !list.first().size() != 0) {
         m_searchResults = list;
     }
 
@@ -160,7 +160,7 @@ void WikiModel::handleSearchComplete(const QString& searchString, QStringList li
     setBusy(false);
 
     if (!cachedResults) {
-        if (list.count() == 1 && list.at(0).isEmpty()) {
+        if (list.count() == 1 && list.first().isEmpty()) {
             m_resultsMap->insert(searchString, QStringList());
         } else {
             m_resultsMap->insert(searchString, list);
