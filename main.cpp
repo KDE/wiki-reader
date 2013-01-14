@@ -17,34 +17,29 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <QApplication>
-#include <QDeclarativeView>
-#include <QDeclarativeContext>
-#include <QDesktopWidget>
-#include <QtCore>
-
 #include "wikimodel.h"
+
+#include <bb/cascades/Application>
+#include <bb/cascades/QmlDocument>
+#include <bb/cascades/Page>
+
+#include <QDesktopWidget>
+
+using namespace bb::cascades;
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    Application app(argc, argv);
 
-    QDesktopWidget* desktopWidget = QApplication::desktop();
-    QRect clientRect = desktopWidget->screenGeometry();
-    QDeclarativeView view;
+    QmlDocument *qmlDocument = QmlDocument::create(&app, "main.qml");
+    Page *page = qmlDocument->createRootObject<Page>();
+    app.setScene(page);
+
     WikiModel wikiModel;
 
-    // QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(&app);
+    // view.rootContext()->setContextProperty("appModel", &wikiModel);
 
-    view.rootContext()->setContextProperty("appModel", &wikiModel);
-    view.setSource(QUrl("qrc:/ui.qml"));
-    view.setSceneRect(clientRect);
-    view.setResizeMode(QDeclarativeView::SizeRootObjectToView);
-    view.showFullScreen();
-
-    QObject::connect((QObject*)view.engine(), SIGNAL(quit()), &app, SLOT(quit()));
     QObject::connect(&wikiModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
-    view.show();
 
     return app.exec();
 }
