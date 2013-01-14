@@ -37,6 +37,7 @@ WikiModel::WikiModel()
     , m_busy(false)
     , m_resultsMap(new QVariantMap())
     , m_errorString("")
+    , m_errorCode(QNetworkReply::NoError)
     , m_language(0)
     , m_wikiUrlPrefix("http://en.")
 {
@@ -66,8 +67,8 @@ WikiModel::WikiModel()
 
     connect(&m_timer, SIGNAL(timeout()), SLOT(fetchUrl()));
 
-    connect(this, SIGNAL(fetchFinished(const QString&, QStringList, int)),
-            SLOT(handleSearchComplete(const QString&, QStringList, int)));
+    connect(this, SIGNAL(fetchFinished(const QString&, QStringList)),
+            SLOT(handleSearchComplete(const QString&, QStringList)));
 }
 
 WikiModel::~WikiModel()
@@ -126,7 +127,8 @@ int WikiModel::setSearchString(const QString& searchString)
     if (iter != m_resultsMap->end())
     {
         const QVariant variant = iter.value();
-        handleSearchComplete(iter.key(), variant.toStringList(), 0, true);
+        m_errorCode = QNetworkReply::NoError;
+        handleSearchComplete(iter.key(), variant.toStringList(), true);
         return 0;
     }
 
@@ -143,9 +145,9 @@ int WikiModel::setSearchString(const QString& searchString)
     m_timer.start();
 }
 
-void WikiModel::handleSearchComplete(const QString& searchString, QStringList list, int networkReplyError, bool cachedResults)
+void WikiModel::handleSearchComplete(const QString& searchString, QStringList list, bool cachedResults)
 {
-    if (networkReplyError != QNetworkReply::NoError)
+    if (m_errorCode != QNetworkReply::NoError)
     {
         setErrorString("Internet not accessible.\nTry Again Later.");
         setBusy(false);
@@ -352,7 +354,8 @@ void WikiModel::httpFinished()
     Q_ASSERT(m_searchNetworkReply);
 
     if (m_searchString.isEmpty()) {
-        emit fetchFinished(m_searchString, QStringList(), 0);
+        m_errorCode = QNetworkReply::NoError;
+        emit fetchFinished(m_searchString, QStringList());
         m_searchNetworkReply->deleteLater();
         m_searchNetworkReply = 0;
         return;
@@ -369,7 +372,8 @@ void WikiModel::httpFinished()
             m_timer.start();
             return;
         } else {
-            emit fetchFinished(m_searchString, QStringList(), searchNetworkReplyError);
+            m_errorCode = searchNetworkReplyError;
+            emit fetchFinished(m_searchString, QStringList());
             return;
         }
     }
@@ -396,7 +400,8 @@ void WikiModel::httpFinished()
     m_searchNetworkReply->deleteLater();
     m_searchNetworkReply = 0;
 
-    emit fetchFinished(m_searchString, final, 0);
+    m_errorCode = QNetworkReply::NoError;
+    emit fetchFinished(m_searchString, final);
 
     final.clear();
 }

@@ -65,8 +65,7 @@ public:
 
 public Q_SLOTS:
 
-    void handleSearchComplete(const QString& searchString, QStringList,
-                              int networkreplyerror, bool cachedresults = false);
+    void handleSearchComplete(const QString& searchString, QStringList, bool cachedresults = false);
 Q_SIGNALS:
 
     void urlChanged();
@@ -75,7 +74,7 @@ Q_SIGNALS:
     void errorChanged();
     void languageChanged();
 
-    void fetchFinished(const QString& searchString, QStringList data, int error);
+    void fetchFinished(const QString& searchString, QStringList data);
 
 private Q_SLOTS:
 
@@ -99,6 +98,7 @@ private:
     QString m_errorString;
     QString m_wikiUrlPrefix;
 
+    int m_errorCode;
     int m_language;
     bool m_busy;
 };
