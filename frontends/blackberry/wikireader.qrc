@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+
+        <file>main.qml</file>
+
+        <file alias="back.png">../icons/common/back.png</file>
+        <file alias="progress.png">../icons/common/progress.png</file>
+        <file alias="next.png">../icons/common/next.png</file>
+        <file alias="home.png">../icons/common/home.png</file>
+        <file alias="email.png">../icons/common/email.png</file>
+
+    </qresource>
+</RCC>
