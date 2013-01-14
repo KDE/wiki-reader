@@ -354,7 +354,6 @@ void WikiModel::httpFinished()
 
     if (m_searchString.isEmpty()) {
         emit fetchFinished(m_searchString, QStringList(), 0);
-        //does controler every come here. incase it comes emit operation complete, release resources and quit.
         m_searchNetworkReply->deleteLater();
         m_searchNetworkReply = 0;
         return;
