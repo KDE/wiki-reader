@@ -146,8 +146,9 @@ int WikiModel::setSearchString(const QString& searchString)
 void WikiModel::handleSearchComplete(const QString& searchString, QStringList list, bool cachedResults)
 {
     emit beginResetModel();
+
     m_searchResults.clear();
-    if (!list.count() == 1 || !list.first().size() != 0) {
+    if (!list.count() == 1 || !list.first().isEmpty()) {
         m_searchResults = list;
     }
 
