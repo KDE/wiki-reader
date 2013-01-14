@@ -16,46 +16,26 @@
  # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  #
 
-if [ $# -ne 4 ]
-then
-  echo "Usage: `basename $0` <testapp> <playbook_ipaddr> <playbook_password> [8bpp | 32bpp]"
-  exit -1
-fi
+import argparse
+import sys
+import shlex
+import subprocess
 
-cp ../../TouchControlOverlay/Device-Debug/libTouchControlOverlay.so ../playbook_prefix/lib/
-echo "<qnx>" > blackberry-10-devalpha.xml
-echo "   <id>org.libsdl.$1</id>" >> blackberry-10-devalpha.xml
-echo "   <name>$1</name>" >> blackberry-10-devalpha.xml
-echo "   <category>core.all</category>" >> blackberry-10-devalpha.xml
-echo "   <versionNumber>1.0.0</versionNumber>" >> blackberry-10-devalpha.xml
-echo "   <buildId>1</buildId>" >> blackberry-10-devalpha.xml
-echo "   <description>Simple DirectMedia $1 App</description>" >> blackberry-10-devalpha.xml
-echo "   <filename>$1</filename>" >> blackberry-10-devalpha.xml
-echo "   <initialWindow>" >> blackberry-10-devalpha.xml
-echo "      <systemChrome>none</systemChrome>" >> blackberry-10-devalpha.xml
-echo "      <transparent>false</transparent>" >> blackberry-10-devalpha.xml
-echo "   </initialWindow>" >> blackberry-10-devalpha.xml
+def main():
+    parser = argparse.ArgumentParser(description='A helper script to deploy your application to a blackberry device')
 
-echo "   <permission system=\"true\">run_native</permission>" >> blackberry-10-devalpha.xml
-echo "   <asset path=\"../playbook_prefix/lib/libSDL-1.2.so.11\" type=\"Qnx/Elf\">libSDL-1.2.so.11</asset>" >> blackberry-10-devalpha.xml
-echo "   <asset path=\"../playbook_prefix/lib/libTouchControlOverlay.so\" type=\"Qnx/Elf\">libTouchControlOverlay.so</asset>" >> blackberry-10-devalpha.xml
-echo "   <asset path=\"icon.bmp\">icon.bmp</asset>" >> blackberry-10-devalpha.xml
-echo "   <asset path=\"sail.bmp\">sail.bmp</asset>" >> blackberry-10-devalpha.xml
-echo "   <asset path=\"sample.bmp\">sample.bmp</asset>" >> blackberry-10-devalpha.xml
-echo "   <asset path=\"sample.wav\">sample.wav</asset>" >> blackberry-10-devalpha.xml
-echo "   <asset path=\"moose.dat\">moose.dat</asset>" >> blackberry-10-devalpha.xml
-echo "   <asset path=\"utf8.txt\">utf8.txt</asset>" >> blackberry-10-devalpha.xml
+    parser.add_argument("--ipaddr", help="Use the selected ip address and relevant device")
+    parser.add_argument("--password", help="Use the selected password")
+    parser.add_argument("--bar-descriptor-xml-path", help="Use the selected path for the bar descriptor file")
 
-if [ "$4" = "8bpp" ]
-then
-  echo "   <env var=\"SDL_VIDEODRIVER\" value=\"pb-8bit\"/>" >> blackberry-10-devalpha.xml
-fi
-echo "   <env var=\"LD_LIBRARY_PATH\" value=\"app/native/lib\"/>" >> blackberry-10-devalpha.xml
-echo "</qnx>" >> blackberry-10-devalpha.xml
+    args = parser.parse_args()
 
-blackberry-nativepackager -package -target bar $1.bar blackberry-10-devalpha.xml $1 icon.bmp sail.bmp sample.bmp sample.wav moose.dat utf8.txt -C ../playbook_prefix ../playbook_prefix/lib/libSDL-1.2.so.11 ../playbook_prefix/lib/libTouchControlOverlay.so
-blackberry-deploy -installApp -device $2 -password $3 -package $1.bar
+    blackberryNativePackagerCommand = 'blackberry-nativepackager -package -target bar wikireader.bar' + args.bar_descriptor_xml_path + ' $2'
 
-rm $1.bar blackberry-10-devalpha.xml
+    blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddr + ' -password ' + args.password + ' -package wikireader.bar'
 
+    subprocess.call([sys.executable] + shlex.split(blackberryNativePackagerCommand))
+    subprocess.call([sys.executable] + shlex.split(blackberryDeployCommand))
 
+if __name__ == "__main__":
+    sys.exit(main())
