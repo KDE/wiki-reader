@@ -27,12 +27,13 @@ def main():
     parser.add_argument("--ipaddr", help="Use the selected ip address and relevant device")
     parser.add_argument("--password", help="Use the selected password")
     parser.add_argument("--bar-descriptor-xml-path", help="Use the selected path for the bar descriptor file")
+    parser.add_argument("--package-name", help="Use the selected package name for creating the bar file")
 
     args = parser.parse_args()
 
-    blackberryNativePackagerCommand = 'blackberry-nativepackager -package -target bar wikireader.bar' + args.bar_descriptor_xml_path + ' $2'
+    blackberryNativePackagerCommand = 'blackberry-nativepackager -package -target bar ' + args.package_name + ' ' + args.bar_descriptor_xml_path + ' $2'
 
-    blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddr + ' -password ' + args.password + ' -package wikireader.bar'
+    blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddr + ' -password ' + args.password + ' -package ' + args.package_name
 
     subprocess.call([sys.executable] + shlex.split(blackberryNativePackagerCommand))
     subprocess.call([sys.executable] + shlex.split(blackberryDeployCommand))
