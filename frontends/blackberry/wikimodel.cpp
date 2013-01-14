@@ -145,19 +145,17 @@ int WikiModel::setSearchString(const QString& searchString)
 
 void WikiModel::handleSearchComplete(const QString& searchString, QStringList list, bool cachedResults)
 {
-    if (QString::compare(searchString, m_searchString, Qt::CaseInsensitive) == 0) {
-        emit beginResetModel();
-        m_searchResults.clear();
-        if (!list.count() == 1 || !list.at(0).size() != 0) {
-            m_searchResults = list;
-        }
-
-        if (!m_searchString.isEmpty()) {
-            m_searchResults.append(QString("Search in google.com").toAscii());
-        }
-
-        emit endResetModel();
+    emit beginResetModel();
+    m_searchResults.clear();
+    if (!list.count() == 1 || !list.at(0).size() != 0) {
+        m_searchResults = list;
     }
+
+    if (!m_searchString.isEmpty()) {
+        m_searchResults.append(QString("Search in google.com").toAscii());
+    }
+
+    emit endResetModel();
 
     setBusy(false);
 
