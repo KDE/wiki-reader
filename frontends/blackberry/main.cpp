@@ -1,5 +1,5 @@
 /******************************************************************************
- * This file is part of the QWiki project
+ * This file is part of the WikiReader project
  * Copyright (c) 2013 Laszlo Papp <lpapp@kde.org>
  *
  * This library is free software; you can redistribute it and/or
