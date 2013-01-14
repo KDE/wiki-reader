@@ -153,7 +153,7 @@ void WikiModel::handleSearchComplete(const QString& searchString, QStringList li
     }
 
     if (!m_searchString.isEmpty()) {
-        m_searchResults.append(QString("Search in google.com").toAscii());
+        m_searchResults.append(QString("Search on google.com").toAscii());
     }
 
     emit endResetModel();
@@ -171,7 +171,7 @@ void WikiModel::handleSearchComplete(const QString& searchString, QStringList li
 
 void WikiModel::showArticle(const QString& title)
 {
-    // Convert title to url and set ita
+    // Convert title to url and set it
     
     QString urlString = title;
     urlString = m_wikiUrlPrefix + "m.wikipedia.org/wiki/" + urlString.replace(' ', '_');
