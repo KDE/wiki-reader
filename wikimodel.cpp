@@ -66,7 +66,7 @@ WikiModel::WikiModel()
 
     connect(&m_timer, SIGNAL(timeout()), SLOT(timerTimeout()));
 
-    connect(this, SIGNAL(operationComplete(const QString&, QStringList, int)),
+    connect(this, SIGNAL(fetchFinished(const QString&, QStringList, int)),
             SLOT(handleSearchComplete(const QString&, QStringList, int)));
 }
 
@@ -353,7 +353,7 @@ void WikiModel::httpFinished()
     Q_ASSERT(m_searchNetworkReply);
 
     if (m_searchString.isEmpty()) {
-        emit operationComplete(m_searchString, QStringList(), 0);
+        emit fetchFinished(m_searchString, QStringList(), 0);
         //does controler every come here. incase it comes emit operation complete, release resources and quit.
         m_searchNetworkReply->deleteLater();
         m_searchNetworkReply = 0;
@@ -371,7 +371,7 @@ void WikiModel::httpFinished()
             m_timer.start();
             return;
         } else {
-            emit operationComplete(m_searchString, QStringList(), searchNetworkReplyError);
+            emit fetchFinished(m_searchString, QStringList(), searchNetworkReplyError);
             return;
         }
     }
@@ -398,7 +398,7 @@ void WikiModel::httpFinished()
     m_searchNetworkReply->deleteLater();
     m_searchNetworkReply = 0;
 
-    emit operationComplete(m_searchString, final, 0);
+    emit fetchFinished(m_searchString, final, 0);
 
     final.clear();
 }

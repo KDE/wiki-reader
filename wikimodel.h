@@ -75,7 +75,7 @@ Q_SIGNALS:
     void errorChanged();
     void languageChanged();
 
-    void operationComplete(const QString& searchString, QStringList data, int error);
+    void fetchFinished(const QString& searchString, QStringList data, int error);
 
 private Q_SLOTS:
 
