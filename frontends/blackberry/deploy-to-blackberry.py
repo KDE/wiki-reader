@@ -25,15 +25,14 @@ def main():
     parser = argparse.ArgumentParser(description='A helper script to deploy your application to a blackberry device')
 
     parser.add_argument("--ipaddress", help="Use the selected ip address and relevant device")
-    parser.add_argument("--password", help="Use the selected password")
+    parser.add_argument("--password", help="Use the selected password for device authorization")
     parser.add_argument("--bar-descriptor-xml-path", help="Use the selected path for the bar descriptor file")
-    parser.add_argument("--package-name", help="Use the selected package name for device authorization")
+    parser.add_argument("--package-name", help="Use the selected package name for creating the bar file")
 
     args = parser.parse_args()
 
     blackberryNativePackagerCommand = 'blackberry-nativepackager -package -target bar ' + args.package_name + '.bar ' + args.bar_descriptor_xml_path
-
-    blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddress + ' -password ' + args.password + ' -package ' + args.package_name
+    blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddress + ' -password ' + args.password + ' -package ' + args.package_name + '.bar'
 
     subprocess.call(shlex.split(blackberryNativePackagerCommand))
     subprocess.call(shlex.split(blackberryDeployCommand))
