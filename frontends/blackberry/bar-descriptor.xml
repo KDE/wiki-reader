@@ -5,10 +5,9 @@
     <versionNumber>1.0.0</versionNumber>
     <description>Wikipedia reader</description>
     <initialWindow>
-        <systemChrome>standard</systemChrome>
+        <systemChrome>none</systemChrome>
         <transparent>false</transparent>
         <autoOrients>true</autoOrients>
-        <aspectRatio>portrait</aspectRatio>
     </initialWindow>
     <icon>
       <image>wikireader114.png</image>
