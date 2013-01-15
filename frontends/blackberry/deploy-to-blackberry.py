@@ -33,7 +33,7 @@ def main():
 
     blackberryNativePackagerCommand = 'blackberry-nativepackager -package -target bar ' + args.package_name + ' ' + args.bar_descriptor_xml_path + ' $2'
 
-    blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddr + ' -password ' + args.password + ' -package ' + args.package_name
+    blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddress + ' -password ' + args.password + ' -package ' + args.package_name
 
     subprocess.call([sys.executable] + shlex.split(blackberryNativePackagerCommand))
     subprocess.call([sys.executable] + shlex.split(blackberryDeployCommand))
