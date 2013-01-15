@@ -31,11 +31,8 @@ def main():
 
     args = parser.parse_args()
 
-    blackberryNativePackagerCommand = 'blackberry-nativepackager -package -target bar ' + args.package_name + '.bar ' + args.bar_descriptor_xml_path
-    blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddress + ' -password ' + args.password + ' -package ' + args.package_name + '.bar'
-
-    subprocess.call(shlex.split(blackberryNativePackagerCommand))
-    subprocess.call(shlex.split(blackberryDeployCommand))
+    subprocess.call(["blackberry-nativepackager", "-package", "-target", "bar", "%s.bar" % args.package_name, args.bar_descriptor_xml_path])
+    subprocess.call(["blackberry-deploy", "-installApp", "-device", args.ipaddress, "-password", args.password, "-package", "%s.bar" % args.package_name])
 
 if __name__ == "__main__":
     sys.exit(main())
