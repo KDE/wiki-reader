@@ -10,7 +10,7 @@
         <autoOrients>true</autoOrients>
     </initialWindow>
     <icon>
-      <image>wikireader114.png</image>
+        <image>wikireader114.png</image>
     </icon>
     <author>Laszlo Papp</author>
     <category>core.media</category>
@@ -18,7 +18,17 @@
     <action system="true">run_native</action>
     <action system="true">access_internet</action>
 
-    <asset path="%SRC_DIR%" type="Qnx/Elf" entry="true">wikireader</asset>
+    <configuration id="com.qnx.qcc.toolChain.1485069140" name="Device-Debug">
+        <platformArchitecture>armle-v7</platformArchitecture>
+        <asset path="../../build/frontends/blackberry/wikireader" entry="true" type="Qnx/Elf">wikireader</asset>
+    </configuration>
+     
+    <configuration id="com.qnx.qcc.toolChain.1120265426" name="Device-Release">
+        <platformArchitecture>armle-v7</platformArchitecture>  
+        <asset path="../../build/frontends/blackberry/wikireader.so" entry="true" type="Qnx/Elf">wikireader.so</asset>
+    </configuration>
+
+     <asset path="../icons/common/wikireader114.png">wikireader114.png</asset>
 
     <env var="LD_LIBRARY_PATH" value="app/native/lib"/>
 </qnx>
