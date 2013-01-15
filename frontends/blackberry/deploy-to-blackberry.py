@@ -31,7 +31,7 @@ def main():
 
     args = parser.parse_args()
 
-    blackberryNativePackagerCommand = 'blackberry-nativepackager -package -target bar ' + args.package_name + ' ' + args.bar_descriptor_xml_path + ' $2'
+    blackberryNativePackagerCommand = 'blackberry-nativepackager -package -target bar ' + args.package_name + '.bar ' + args.bar_descriptor_xml_path
 
     blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddress + ' -password ' + args.password + ' -package ' + args.package_name
 
