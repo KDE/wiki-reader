@@ -13,7 +13,7 @@
       <image>wikireader114.png</image>
     </icon>
     <author>Laszlo Papp</author>
-    <category>core.media</author>
+    <category>core.media</category>
 
     <action system="true">run_native</action>
     <action system="true">access_internet</action>
