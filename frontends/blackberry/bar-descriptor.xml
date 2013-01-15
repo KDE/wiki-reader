@@ -12,7 +12,8 @@
     <icon>
         <image>wikireader114.png</image>
     </icon>
-    <author>Laszlo Papp</author>
+    <author>Symbio Software Oy</author>
+    <authorId>gYAAgDZL9Yn-mVIbTC_wAsMcnU8</authorId>
     <category>core.media</category>
 
     <action system="true">run_native</action>

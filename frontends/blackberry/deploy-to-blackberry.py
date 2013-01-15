@@ -31,7 +31,7 @@ def main():
 
     args = parser.parse_args()
 
-    subprocess.call(["blackberry-nativepackager", "-package", "-target", "bar", "%s.bar" % args.package_name, args.bar_descriptor_xml_path])
+    subprocess.call(["blackberry-nativepackager", "-package", "-target", "bar", "%s.bar" % args.package_name, args.bar_descriptor_xml_path, "-devMode"])
     subprocess.call(["blackberry-deploy", "-installApp", "-device", args.ipaddress, "-password", args.password, "-package", "%s.bar" % args.package_name])
 
 if __name__ == "__main__":
