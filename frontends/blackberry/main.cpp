@@ -31,15 +31,18 @@ int main(int argc, char *argv[])
 {
     Application app(argc, argv);
 
-    QmlDocument *qmlDocument = QmlDocument::create(&app, "main.qml");
-    Page *page = qmlDocument->createRootObject<Page>();
-    app.setScene(page);
-
     WikiModel wikiModel;
 
-    // view.rootContext()->setContextProperty("appModel", &wikiModel);
+    QmlDocument *qmlDocument = QmlDocument::create("main.qml").property("wikiModel", &wikiModel);
 
-    QObject::connect(&wikiModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
+    if (!qmlDocument->hasErrors()) {
+        Page *page= qmlDocument->createRootObject<Page>();
+        if (page) {
+            app.setScene(page);
+        }
+    }
+
+    // QObject::connect(&wikiModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
 
     return app.exec();
 }
