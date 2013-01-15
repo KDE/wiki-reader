@@ -24,10 +24,10 @@ import subprocess
 def main():
     parser = argparse.ArgumentParser(description='A helper script to deploy your application to a blackberry device')
 
-    parser.add_argument("--ipaddr", help="Use the selected ip address and relevant device")
+    parser.add_argument("--ipaddress", help="Use the selected ip address and relevant device")
     parser.add_argument("--password", help="Use the selected password")
     parser.add_argument("--bar-descriptor-xml-path", help="Use the selected path for the bar descriptor file")
-    parser.add_argument("--package-name", help="Use the selected package name for creating the bar file")
+    parser.add_argument("--package-name", help="Use the selected package name for device authorization")
 
     args = parser.parse_args()
 
