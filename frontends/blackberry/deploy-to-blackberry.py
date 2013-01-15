@@ -20,6 +20,7 @@ import argparse
 import sys
 import shlex
 import subprocess
+import os
 
 def main():
     parser = argparse.ArgumentParser(description='A helper script to deploy your application to a blackberry device')
@@ -33,6 +34,8 @@ def main():
 
     subprocess.call(["blackberry-nativepackager", "-package", "-target", "bar", "%s.bar" % args.package_name, args.bar_descriptor_xml_path, "-devMode"])
     subprocess.call(["blackberry-deploy", "-installApp", "-device", args.ipaddress, "-password", args.password, "-package", "%s.bar" % args.package_name])
+
+    os.remove("%s.bar" % args.package_name)
 
 if __name__ == "__main__":
     sys.exit(main())
