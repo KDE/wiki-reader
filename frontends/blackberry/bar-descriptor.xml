@@ -16,9 +16,6 @@
     <authorId>gYAAgDZL9Yn-mVIbTC_wAsMcnU8</authorId>
     <category>core.media</category>
 
-    <action system="true">run_native</action>
-    <action system="true">access_internet</action>
-
     <configuration id="com.qnx.qcc.toolChain.1485069140" name="Device-Debug">
         <platformArchitecture>armle-v7</platformArchitecture>
         <asset path="../../build/frontends/blackberry/wikireader" entry="true" type="Qnx/Elf">wikireader</asset>
@@ -30,6 +27,9 @@
     </configuration>
 
     <asset path="../icons/common/wikireader114.png">wikireader114.png</asset>
+
+    <permission system="true">run_native</permission>
+    <permission system="true">access_internet</permission>
 
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
 </qnx>
