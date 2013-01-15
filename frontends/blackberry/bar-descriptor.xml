@@ -10,6 +10,9 @@
         <autoOrients>true</autoOrients>
         <aspectRatio>portrait</aspectRatio>
     </initialWindow>
+    <icon>
+      <image>wikireader114.png</image>
+    </icon>
     <author>Laszlo Papp</author>
     <category>core.media</author>
 
