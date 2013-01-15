@@ -35,8 +35,8 @@ def main():
 
     blackberryDeployCommand = 'blackberry-deploy -installApp -device ' + args.ipaddress + ' -password ' + args.password + ' -package ' + args.package_name
 
-    subprocess.call([sys.executable] + shlex.split(blackberryNativePackagerCommand))
-    subprocess.call([sys.executable] + shlex.split(blackberryDeployCommand))
+    subprocess.call(shlex.split(blackberryNativePackagerCommand))
+    subprocess.call(shlex.split(blackberryDeployCommand))
 
 if __name__ == "__main__":
     sys.exit(main())
