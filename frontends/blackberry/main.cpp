@@ -23,7 +23,8 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/Page>
 
-#include <QDesktopWidget>
+#include <QLocale>
+#include <QTranslator>
 
 using namespace bb::cascades;
 
@@ -31,18 +32,25 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     Application app(argc, argv);
 
+    QTranslator translator;
+    QString localeString = QLocale().name();
+    QString filename = QString("WikiReader_%1").arg(localeString);
+    if (translator.load(filename, "app/native/qm")) {
+        app.installTranslator(&translator);
+    }
+
     WikiModel wikiModel;
 
-    QmlDocument *qmlDocument = QmlDocument::create("main.qml").property("wikiModel", &wikiModel);
+    QmlDocument *qmlDocument = QmlDocument::create("asset://main.qml");
+    qmlDocument->setContextProperty("wikiModel", &wikiModel);
 
-    if (!qmlDocument->hasErrors()) {
-        Page *page= qmlDocument->createRootObject<Page>();
-        if (page) {
-            app.setScene(page);
-        }
-    }
+    AbstractPane *root= qmlDocument->createRootObject<AbstractPane>();
+
+    app.setScene(root);
 
     // QObject::connect(&wikiModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
 
-    return app.exec();
+    bool retval = app.exec();
+    delete qmlDocument;
+    return retval;
 }
