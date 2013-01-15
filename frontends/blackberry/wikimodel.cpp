@@ -175,6 +175,7 @@ void WikiModel::showArticle(const QString& title)
     
     QString urlString = title;
     urlString = m_wikiUrlPrefix + "m.wikipedia.org/wiki/" + urlString.replace(' ', '_');
+
     setUrl(urlString);
 }
 

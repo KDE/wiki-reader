@@ -3,6 +3,12 @@ cmake_minimum_required(VERSION 2.8.10)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+
 find_package(Qt4 4.8 REQUIRED)
 find_package(BBCascades REQUIRED)
 
@@ -21,8 +27,6 @@ set(WikiReader_SRCS
 QT4_ADD_RESOURCES(WikiReader_RCC_SRCS
     wikireader.qrc
 )
-
-qt4_automoc(${WikiReader_SRCS})
 
 add_executable(wikireader ${WikiReader_SRCS} ${WikiReader_RCC_SRCS})
 
