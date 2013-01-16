@@ -51,6 +51,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     // QObject::connect(&wikiModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
 
     bool retval = app.exec();
-    delete qmlDocument;
+    qmlDocument->deleteLater();
     return retval;
 }
