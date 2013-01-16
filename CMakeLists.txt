@@ -22,20 +22,5 @@ project(Wikireader)
 
 option(BUILD_WIKIREADER_BLACKBERRY "Build Wikireader for Blackberry 10" ON)
 
-SET(CMAKE_CXX_FLAGS "-Wall -fPIC")
-SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS} -O2 -g")
-SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O2")
-SET(CMAKE_CXX_FLAGS_DEBUG  "${CMAKE_CXX_FLAGS} -g3 -ggdb -O0" CACHE STRING "Debug options." FORCE)
-
-####### Core #######
-#add_subdirectory(core)
-
 ###### Frontends ######
 add_subdirectory(frontends)
-
-###### CPACK part ######
-#include(CPack)
-
-###### CTEST part ######
-#include(CTest)
-

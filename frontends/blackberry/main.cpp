@@ -30,25 +30,24 @@ using namespace bb::cascades;
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-    Application app(argc, argv);
+    Application application(argc, argv);
 
     QTranslator translator;
     QString localeString = QLocale().name();
     QString filename = QString("WikiReader_%1").arg(localeString);
     if (translator.load(filename, "app/native/qm")) {
-        app.installTranslator(&translator);
+        application.installTranslator(&translator);
     }
 
-    WikiModel wikiModel;
+    // WikiModel wikiModel;
 
-    QmlDocument *qmlDocument = QmlDocument::create("asset:///main.qml").parent(&app);
-    qmlDocument->setContextProperty("wikiModel", &wikiModel);
+    QmlDocument *qmlDocument = QmlDocument::create("asset:///main.qml").parent(&application);
+    // qmlDocument->setContextProperty("wikiModel", &wikiModel);
 
-    AbstractPane *root= qmlDocument->createRootObject<AbstractPane>();
-
-    app.setScene(root);
+    AbstractPane *rootPane= qmlDocument->createRootObject<AbstractPane>();
+    application.setScene(rootPane);
 
     // QObject::connect(&wikiModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
 
-    return app.exec();
+    return application.exec();
 }
