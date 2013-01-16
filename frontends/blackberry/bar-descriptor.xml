@@ -27,6 +27,10 @@
     </configuration>
 
     <asset path="../icons/common/wikireader114.png">wikireader114.png</asset>
+    
+    <asset path="assets" dest="assets">
+        <exclude name="**/*.qml"/>
+    </asset>
 
     <permission system="true">run_native</permission>
     <permission system="true">access_internet</permission>
