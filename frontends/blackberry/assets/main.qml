@@ -68,7 +68,8 @@ Page {
 
         ActionItem {
             id: languageActionItem
-            title: selectionDialog.model.get(wikiModel.language).name
+            // title: selectionDialog.model.get(wikiModel.language).name
+            title: "Languages"
             imageSource: "asset:///images/language.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
@@ -215,11 +216,11 @@ Page {
 
             rootIndexPath: [1]
             dataModel: wikiModel
-            ListItemComponents: [
+            listItemComponents: [
                 ListItemComponent {
                     type: "item"
 
-                    Label {
+                    Button {
                         text: ListItem.data
 
                         onClicked: {
@@ -277,8 +278,6 @@ Page {
 
         ActivityIndicator {
             id: activityIndicator
-
-            anchors.centerIn: parent
 
             preferredWidth: 75
             preferredHeight: 75

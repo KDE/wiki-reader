@@ -39,10 +39,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         application.installTranslator(&translator);
     }
 
-    // WikiModel wikiModel;
+    WikiModel wikiModel;
 
     QmlDocument *qmlDocument = QmlDocument::create("asset:///main.qml").parent(&application);
-    // qmlDocument->setContextProperty("wikiModel", &wikiModel);
+    qmlDocument->setContextProperty("wikiModel", &wikiModel);
 
     AbstractPane *rootPane= qmlDocument->createRootObject<AbstractPane>();
     application.setScene(rootPane);
