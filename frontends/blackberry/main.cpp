@@ -41,7 +41,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     WikiModel wikiModel;
 
-    QmlDocument *qmlDocument = QmlDocument::create("asset://main.qml");
+    QmlDocument *qmlDocument = QmlDocument::create("asset://main.qml").parent(&app);
     qmlDocument->setContextProperty("wikiModel", &wikiModel);
 
     AbstractPane *root= qmlDocument->createRootObject<AbstractPane>();
@@ -50,7 +50,5 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     // QObject::connect(&wikiModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
 
-    bool retval = app.exec();
-    qmlDocument->deleteLater();
-    return retval;
+    return app.exec();
 }
