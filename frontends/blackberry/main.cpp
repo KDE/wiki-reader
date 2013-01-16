@@ -41,7 +41,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     WikiModel wikiModel;
 
-    QmlDocument *qmlDocument = QmlDocument::create("asset://main.qml").parent(&app);
+    QmlDocument *qmlDocument = QmlDocument::create("asset:///main.qml").parent(&app);
     qmlDocument->setContextProperty("wikiModel", &wikiModel);
 
     AbstractPane *root= qmlDocument->createRootObject<AbstractPane>();
