@@ -21,6 +21,13 @@ import bb.cascades 1.0
 
 Page {
 
+    function loadUrl()
+    {
+        wikiWebView.url = wikiModel.url
+        wikiScrollView.visible = true
+        searchBar.visible = false
+    }
+
     actions: [
         // The page should be refactored later into two pages
         // 1) WebView + potentially the Action Bar
@@ -68,7 +75,7 @@ Page {
             onTriggered: {
                 languageSelectionDialog.open();
             }
-        },
+        }
         
         // This is to ponder later whether it is a common enough use case to
         // rearrange the layout. There could be a group here because "Find in
@@ -120,7 +127,7 @@ Page {
                 orientation: LayoutOrientation.LeftToRight
             }
 
-            HorizontalAlignment: HorizontalAlignment::Right
+            horizontalAlignment: HorizontalAlignment.Right
             visible: false
 
             TextField {
@@ -138,7 +145,7 @@ Page {
             // ProgressDialog for instance inside Cascades.
 
             // ImageView {
-                id: busyicon
+                // id: busyicon
                 // anchors.right: searchbar.right
                 // anchors.rightMargin: 8
                 // anchors.verticalCenter: searchbar.verticalCenter
@@ -223,7 +230,7 @@ Page {
                             }
                         }
                     }
-                
+                }
             ]
 
             onSelectionChanged: {
@@ -234,7 +241,7 @@ Page {
         ScrollView {
             id: wikiScrollView
 
-            verticalAlignment: VerticalAlignment::Fill
+            verticalAlignment: VerticalAlignment.Fill
             visible: true
 
             WebView {
@@ -280,11 +287,4 @@ Page {
         }
 
     }
-}
-
-function loadUrl()
-{
-    wikiWebView.url = wikiModel.url
-    wikiScrollView.visible = true
-    searchBar.visible = false
 }
