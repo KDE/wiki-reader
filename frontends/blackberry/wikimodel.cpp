@@ -32,13 +32,13 @@
 
 WikiModel::WikiModel()
     : m_searchNetworkReply(0)
+    , m_resultsMap(new QVariantMap())
     , m_searchString("")
     , m_url("")
-    , m_busy(false)
-    , m_resultsMap(new QVariantMap())
     , m_errorString("")
-    , m_language(0)
     , m_wikiUrlPrefix("http://en.")
+    , m_language(0)
+    , m_busy(false)
 {
     m_timer.setSingleShot(true);
     m_timer.setInterval(1000);
