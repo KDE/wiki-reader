@@ -98,7 +98,7 @@ Page {
         // }
     ]
 
-    content:Container {
+    Container {
         id: rootContainer
     
         topPadding: 20.0
