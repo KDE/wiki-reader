@@ -58,14 +58,15 @@ public:
     void setErrorString(const QString& errorString);
     QString errorString() const;
 
-    Q_INVOKABLE void setSearchString(const QString& searchString);
-    Q_INVOKABLE void showArticle(const QString& title);
-    Q_INVOKABLE void searchGoogle(const QString& str);
-    Q_INVOKABLE void shareArticle(const QString& url);
-
 public Q_SLOTS:
 
+    void setSearchString(const QString& searchString);
+    void showArticle(const QString& title);
+    void searchGoogle(const QString& str);
+    void shareArticle(const QString& url);
+
     void handleSearchComplete(const QString& searchString, QStringList, bool cachedresults = false);
+
 Q_SIGNALS:
 
     void urlChanged();
