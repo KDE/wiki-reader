@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef MODEL_H
-#define MODEL_H
+#ifndef SEARCHMODEL_H
+#define SEARCHMODEL_H
 
 #include <QTimer>
 #include <QAbstractListModel>
@@ -103,4 +103,4 @@ private:
     bool m_busy;
 };
 
-#endif // WIKIMODEL_H
+#endif // SEARCHMODEL_H
