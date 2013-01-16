@@ -117,7 +117,7 @@ QVariant WikiModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
-int WikiModel::setSearchString(const QString& searchString)
+void WikiModel::setSearchString(const QString& searchString)
 {
     m_searchString = searchString.trimmed();
 
@@ -127,7 +127,6 @@ int WikiModel::setSearchString(const QString& searchString)
     {
         const QVariant variant = iter.value();
         handleSearchComplete(iter.key(), variant.toStringList(), true);
-        return 0;
     }
 
     if (m_searchString.isEmpty())
