@@ -23,7 +23,7 @@ Page {
 
     function loadUrl()
     {
-        wikiWebView.url = wikiModel.url
+        wikiWebView.url = searchModel.url
         wikiScrollView.visible = true
         searchBar.visible = false
     }
@@ -68,7 +68,7 @@ Page {
 
         ActionItem {
             id: languageActionItem
-            // title: selectionDialog.model.get(wikiModel.language).name
+            // title: selectionDialog.model.get(searchModel.language).name
             title: "Languages"
             imageSource: "asset:///images/language.png"
             ActionBar.placement: ActionBarPlacement.OnBar
@@ -101,7 +101,7 @@ Page {
             // ActionBar.placement: ActionBarPlacement.OnBar
 
             // onTriggered: {
-                // wikiModel.shareArticle(webitem.url);
+                // searchModel.shareArticle(webitem.url);
             // }
         // }
     ]
@@ -137,7 +137,7 @@ Page {
                 hintText: "Search the text"
 
                 onTextChanging: {
-                    wikiModel.setSearchString(text);
+                    searchModel.setSearchString(text);
                 }
             }
 
@@ -153,7 +153,7 @@ Page {
                 // imageSource: "asset:///images/progress.png"
                 // width: 30
                 // height: 30
-                // visible: wikiModel.busy ? true : false
+                // visible: searchModel.busy ? true : false
                 // PropertyAnimation on rotation { to: 360; duration: 1000; loops: Animation.Infinite}
             // }
 
@@ -199,8 +199,8 @@ Page {
                 // }
 
                 // onAccepted: {
-                    // wikiModel.language = selectedIndex
-                    // langicon.text = selectionDialog.model.get(wikiModel.p_language).name
+                    // searchModel.language = selectedIndex
+                    // langicon.text = selectionDialog.model.get(searchModel.p_language).name
                     // searchbar.focus = true;
                 // }
             // }
@@ -215,7 +215,7 @@ Page {
             id: completionListView
 
             rootIndexPath: [1]
-            dataModel: wikiModel
+            dataModel: searchModel
             listItemComponents: [
                 ListItemComponent {
                     type: "item"
@@ -225,9 +225,9 @@ Page {
 
                         onClicked: {
                             if (title == "Search on google.com") {
-                                wikiModel.searchGoogle(searchbar.text);
+                                searchModel.searchGoogle(searchbar.text);
                             } else {
-                                wikiModel.showArticle(title);
+                                searchModel.showArticle(title);
                             }
                         }
                     }
@@ -254,7 +254,7 @@ Page {
                 settings.viewport: {
                     // "width" : "device-width"
                     // "height": "devide-height"
-                    // defaultFontSize: wikiModel.fontSize
+                    // defaultFontSize: searchModel.fontSize
                     "initial-scale" : 1.0
                 }
                 

@@ -19,7 +19,7 @@ include_directories(
 
 set(WikiReader_SRCS
     main.cpp
-    wikimodel.cpp
+    searchmodel.cpp
 )
 
 QT4_ADD_RESOURCES(WikiReader_RCC_SRCS

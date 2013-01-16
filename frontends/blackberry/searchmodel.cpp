@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "wikimodel.h"
+#include "searchmodel.h"
 
 #include <QDesktopServices>
 
@@ -30,7 +30,7 @@
 #include <QFile>
 #include <QDebug>
 
-WikiModel::WikiModel()
+SearchModel::SearchModel()
     : m_searchNetworkReply(0)
     , m_resultsMap(new QVariantMap())
     , m_searchString("")
@@ -70,7 +70,7 @@ WikiModel::WikiModel()
             SLOT(handleSearchComplete(const QString&, QStringList)));
 }
 
-WikiModel::~WikiModel()
+SearchModel::~SearchModel()
 {
     QFile file("wikireader.conf");
     if (file.open( QIODevice::WriteOnly)) {
@@ -100,12 +100,12 @@ WikiModel::~WikiModel()
     }
 }
 
-int WikiModel::rowCount(const QModelIndex& index) const
+int SearchModel::rowCount(const QModelIndex& index) const
 {
     return m_searchResults.count();
 }
 
-QVariant WikiModel::data(const QModelIndex& index, int role) const
+QVariant SearchModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid())
         return QVariant();
@@ -117,7 +117,7 @@ QVariant WikiModel::data(const QModelIndex& index, int role) const
     return QVariant();
 }
 
-void WikiModel::setSearchString(const QString& searchString)
+void SearchModel::setSearchString(const QString& searchString)
 {
     m_searchString = searchString.trimmed();
 
@@ -142,7 +142,7 @@ void WikiModel::setSearchString(const QString& searchString)
     m_timer.start();
 }
 
-void WikiModel::handleSearchComplete(const QString& searchString, QStringList list, bool cachedResults)
+void SearchModel::handleSearchComplete(const QString& searchString, QStringList list, bool cachedResults)
 {
     emit beginResetModel();
 
@@ -168,7 +168,7 @@ void WikiModel::handleSearchComplete(const QString& searchString, QStringList li
     }
 }
 
-void WikiModel::showArticle(const QString& title)
+void SearchModel::showArticle(const QString& title)
 {
     // Convert title to url and set it
     
@@ -178,7 +178,7 @@ void WikiModel::showArticle(const QString& title)
     setUrl(urlString);
 }
 
-void WikiModel::shareArticle(const QString& url)
+void SearchModel::shareArticle(const QString& url)
 {
     QString urlString = url;
     urlString = "mailto:?subject=Check this article&body=I found an interesting article. Check it out.\n "+ urlString;
@@ -186,7 +186,7 @@ void WikiModel::shareArticle(const QString& url)
     QDesktopServices::openUrl(QUrl(urlString));
 }
 
-void WikiModel::searchGoogle(const QString& string)
+void SearchModel::searchGoogle(const QString& string)
 {
     QString trimmedString = string.trimmed();
 
@@ -199,7 +199,7 @@ void WikiModel::searchGoogle(const QString& string)
     QDesktopServices::openUrl(QUrl(urlString));
 }
 
-QString WikiModel::languageToString() const
+QString SearchModel::languageToString() const
 {
     QString languageString = "http://";
     switch (m_language)
@@ -260,12 +260,12 @@ QString WikiModel::languageToString() const
     return languageString;
 }
 
-int WikiModel::language() const
+int SearchModel::language() const
 {
     return m_language;
 }   
 
-void WikiModel::setLanguage(int language)
+void SearchModel::setLanguage(int language)
 {
     m_language = language;
     m_wikiUrlPrefix = languageToString();
@@ -278,40 +278,40 @@ void WikiModel::setLanguage(int language)
 }   
 
 
-QString WikiModel::url() const
+QString SearchModel::url() const
 {
     return m_url;
 }   
 
-void WikiModel::setUrl(const QString& url)
+void SearchModel::setUrl(const QString& url)
 {   
     m_url = url;
     emit urlChanged();
 }
 
-bool WikiModel::busy() const
+bool SearchModel::busy() const
 {
     return m_busy;
 }   
 
-void WikiModel::setBusy(bool state)
+void SearchModel::setBusy(bool state)
 {
     m_busy = state;
     emit busyChanged();
 }
 
-void WikiModel::setErrorString(const QString& errorString)
+void SearchModel::setErrorString(const QString& errorString)
 {
     m_errorString = errorString;
     emit errorChanged();
 }   
 
-QString WikiModel::errorString() const
+QString SearchModel::errorString() const
 {
     return m_errorString;
 }
 
-void WikiModel::fetchUrl()
+void SearchModel::fetchUrl()
 {
     if (m_searchNetworkReply != NULL) {
         // Search in progress so do not open request a new one
@@ -331,7 +331,7 @@ void WikiModel::fetchUrl()
     connect(m_searchNetworkReply, SIGNAL(readyRead()), SLOT(httpReadyRead()));
 }
 
-void WikiModel::httpReadyRead()
+void SearchModel::httpReadyRead()
 {
     if (m_searchString.isEmpty())
         return;
@@ -339,7 +339,7 @@ void WikiModel::httpReadyRead()
     m_searchResultData += m_searchNetworkReply->readAll();
 }
 
-void WikiModel::httpFinished()
+void SearchModel::httpFinished()
 {
     Q_ASSERT(m_searchNetworkReply);
 
@@ -394,4 +394,4 @@ void WikiModel::httpFinished()
     final.clear();
 }
 
-#include <wikimodel.moc>
+#include <searchmodel.moc>

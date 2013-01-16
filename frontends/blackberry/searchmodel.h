@@ -28,7 +28,7 @@
 class HistoryModel;
 class FavModel;
 
-class WikiModel: public QAbstractListModel
+class SearchModel: public QAbstractListModel
 {
     Q_OBJECT
 
@@ -38,8 +38,8 @@ class WikiModel: public QAbstractListModel
     Q_PROPERTY(int language READ language WRITE setLanguage NOTIFY languageChanged)
 
 public:
-    WikiModel();
-    ~WikiModel();
+    SearchModel();
+    ~SearchModel();
 
     virtual int rowCount(const QModelIndex& index) const;
     virtual QVariant data(const QModelIndex& index, int role) const;

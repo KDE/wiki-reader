@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "wikimodel.h"
+#include "searchmodel.h"
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
@@ -39,15 +39,15 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
         application.installTranslator(&translator);
     }
 
-    WikiModel wikiModel;
+    SearchModel searchModel;
 
     QmlDocument *qmlDocument = QmlDocument::create("asset:///main.qml").parent(&application);
-    qmlDocument->setContextProperty("wikiModel", &wikiModel);
+    qmlDocument->setContextProperty("searchModel", &searchModel);
 
     AbstractPane *rootPane= qmlDocument->createRootObject<AbstractPane>();
     application.setScene(rootPane);
 
-    // QObject::connect(&wikiModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
+    // QObject::connect(&searchModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
 
     return application.exec();
 }
