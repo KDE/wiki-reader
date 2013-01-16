@@ -27,6 +27,7 @@
     </configuration>
 
     <asset path="../icons/common/wikireader114.png">wikireader114.png</asset>
+    <asset path="assets">assets</asset>
     
     <asset path="assets" dest="assets">
         <exclude name="**/*.qml"/>
