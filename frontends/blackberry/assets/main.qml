@@ -35,7 +35,7 @@ Page {
             onTriggered: {
                 wikiWebView.goBack();
             }
-        }
+        },
 
         ActionItem {
             id: nextActionItem
@@ -46,7 +46,7 @@ Page {
             onTriggered: {
                 wikiWebView.goForward();
             }
-        }
+        },
 
         ActionItem {
             id: searchActionItem
@@ -57,7 +57,7 @@ Page {
             onTriggered: {
                 searchBar.visible = true;
             }
-        }
+        },
 
         ActionItem {
             id: languageActionItem
@@ -68,7 +68,7 @@ Page {
             onTriggered: {
                 languageSelectionDialog.open();
             }
-        }
+        },
         
         // This is to ponder later whether it is a common enough use case to
         // rearrange the layout. There could be a group here because "Find in
