@@ -33,7 +33,7 @@ def main():
     args = parser.parse_args()
 
     subprocess.call(["blackberry-nativepackager", "-package", "-target", "bar", "%s.bar" % args.package_name, args.bar_descriptor_xml_path, "-devMode"])
-    subprocess.call(["blackberry-deploy", "-installApp", "-device", args.ipaddress, "-password", args.password, "-package", "%s.bar" % args.package_name])
+    subprocess.call(["blackberry-deploy", "-installApp", "-device", args.ipaddress, "-launchApp", "-password", args.password, "-package", "%s.bar" % args.package_name])
 
     os.remove("%s.bar" % args.package_name)
 
