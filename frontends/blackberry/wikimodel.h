@@ -65,8 +65,6 @@ public Q_SLOTS:
     void searchGoogle(const QString& str);
     void shareArticle(const QString& url);
 
-    void handleSearchComplete(const QString& searchString, QStringList, bool cachedresults = false);
-
 Q_SIGNALS:
 
     void urlChanged();
@@ -82,6 +80,8 @@ private Q_SLOTS:
     void httpFinished();
     void httpReadyRead();
     void fetchUrl();
+
+    void handleSearchComplete(const QString& searchString, QStringList resultList, bool cachedresults = false);
 
 private:
 
