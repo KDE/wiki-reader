@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
 
-        <file>main.qml</file>
+        <file>assets/main.qml</file>
 
         <file alias="back.png">../icons/common/back.png</file>
         <file alias="progress.png">../icons/common/progress.png</file>
