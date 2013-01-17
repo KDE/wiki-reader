@@ -185,6 +185,16 @@ void SearchModel::showArticle(const QString& title)
     setUrl(urlString);
 }
 
+void SearchModel::showArticle(int index)
+{
+    // Convert title to url and set it
+    
+    QString urlString = m_searchResults.at(index);
+    urlString = m_wikiUrlPrefix + "m.wikipedia.org/wiki/" + urlString.replace(' ', '_');
+
+    setUrl(urlString);
+}
+
 void SearchModel::shareArticle(const QString& url)
 {
     QString urlString = url;

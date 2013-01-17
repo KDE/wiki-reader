@@ -260,7 +260,7 @@ Page {
                 // if (title == "Search on google.com") {
                 //     searchModel.searchGoogle(searchbar.text);
                 // } else {
-                     searchModel.showArticle(title);
+                    searchModel.showArticle(indexPath[0]);
                 // }
             }
                 

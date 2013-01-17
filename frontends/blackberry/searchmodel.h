@@ -67,6 +67,7 @@ public Q_SLOTS:
 
     void setSearchString(const QString& searchString);
     void showArticle(const QString& title);
+    void showArticle(int index);
     void searchGoogle(const QString& str);
     void shareArticle(const QString& url);
 
