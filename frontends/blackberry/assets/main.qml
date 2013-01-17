@@ -255,8 +255,11 @@ Page {
                 // } else {
                     searchModel.showArticle(indexPath[0]);
 
+                    // This should be done in a signal handler for urlChanged
+
                     wikiScrollView.visible = true
                     searchBar.visible = false
+                    resultsListView.visible = false
                 // }
             }
                 
