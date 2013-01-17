@@ -43,11 +43,11 @@ SearchModel::SearchModel()
     m_timer.setSingleShot(true);
     m_timer.setInterval(1000);
 
-    QHash<int, QByteArray> roles;
-    roles[0] = "title";
+    // QHash<int, QByteArray> roles;
+    // roles[0] = "title";
 
-    setRoleNames(roles);
-    roles.clear();
+    // setRoleNames(roles);
+    // roles.clear();
 
     QString fi("wikireader.conf");
     QFile file(fi.toLower());
@@ -100,16 +100,16 @@ SearchModel::~SearchModel()
     }
 }
 
-int SearchModel::childCount(const QVariantList &indexPath) const
+int SearchModel::childCount(const QVariantList &indexPath)
 {
     if (indexPath.isEmpty()) {
-        m_searchresults.count()
+        m_searchResults.count();
     }
 
     return 0;
 }
 
-bool SearchModel::hasChildren(const QVariantList &indexPath) const
+bool SearchModel::hasChildren(const QVariantList &indexPath)
 {
     if (indexPath.empty()) {
         return true;
@@ -118,12 +118,12 @@ bool SearchModel::hasChildren(const QVariantList &indexPath) const
     return false;
 }
 
-QString SearchModel::itemType(const QVariantList &indexPath) const
+QString SearchModel::itemType(const QVariantList &indexPath)
 {
     return "title";
 }
 
-QVariant SearchModel::data(const QVariantList &indexPath) const
+QVariant SearchModel::data(const QVariantList &indexPath)
 {
     return QVariant(m_searchResults.at(indexPath.first().toInt()));
 }
@@ -142,10 +142,8 @@ void SearchModel::setSearchString(const QString& searchString)
 
     if (m_searchString.isEmpty())
     {
-        emit beginResetModel();
         m_searchResults.clear();
         setBusy(false);
-        emit endResetModel();
     } else {
         setBusy(true);
     }
@@ -155,8 +153,6 @@ void SearchModel::setSearchString(const QString& searchString)
 
 void SearchModel::handleSearchComplete(const QString& searchString, QStringList list, bool cachedResults)
 {
-    emit beginResetModel();
-
     m_searchResults.clear();
     if (!list.count() == 1 || !list.first().isEmpty()) {
         m_searchResults = list;
@@ -165,8 +161,6 @@ void SearchModel::handleSearchComplete(const QString& searchString, QStringList 
     if (!m_searchString.isEmpty()) {
         m_searchResults.append(QString("Search on google.com").toAscii());
     }
-
-    emit endResetModel();
 
     setBusy(false);
 

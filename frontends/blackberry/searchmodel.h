@@ -44,10 +44,10 @@ public:
     SearchModel();
     ~SearchModel();
 
-    virtual int childCount(const QVariantList &indexPath) const;
-    virtual bool hasChildren(const QVariantList &indexPath) const;
-    virtual QString itemType(const QVariantList &indexPath) const;
-    virtual QVariant data(const QVariantList &indexPath) const;
+    virtual int childCount(const QVariantList &indexPath);
+    virtual bool hasChildren(const QVariantList &indexPath);
+    virtual QString itemType(const QVariantList &indexPath);
+    virtual QVariant data(const QVariantList &indexPath);
 
     void setLanguage(int language);
     int language() const;
