@@ -243,7 +243,7 @@ Page {
                     type: "title"
 
                     StandardListItem {
-                        title: ListItemData
+                        title: ListItem.data
 
                     }
                 }
