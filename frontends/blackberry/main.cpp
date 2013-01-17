@@ -47,7 +47,5 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     AbstractPane *rootPane= qmlDocument->createRootObject<AbstractPane>();
     application.setScene(rootPane);
 
-    // QObject::connect(&searchModel, SIGNAL(urlChanged()),(QObject*) view.rootObject(), SLOT(loadUrl()));
-
     return application.exec();
 }

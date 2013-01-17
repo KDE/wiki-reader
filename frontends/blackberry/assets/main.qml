@@ -21,13 +21,6 @@ import bb.cascades 1.0
 
 Page {
 
-    function loadUrl()
-    {
-        wikiWebView.url = searchModel.url
-        wikiScrollView.visible = true
-        searchBar.visible = false
-    }
-
     // It is commented for now as it is just consumes the space uselessly
 
     // titleBar: TitleBar {
@@ -261,6 +254,9 @@ Page {
                 //     searchModel.searchGoogle(searchbar.text);
                 // } else {
                     searchModel.showArticle(indexPath[0]);
+
+                    wikiScrollView.visible = true
+                    searchBar.visible = false
                 // }
             }
                 
@@ -278,7 +274,7 @@ Page {
             WebView {
                 id: wikiWebView
 
-                url: "http://wikipedia.org"
+                url: searchModel.url
                 // z: 1
 
                 settings.viewport: {
