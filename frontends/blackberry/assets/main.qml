@@ -139,7 +139,7 @@ Page {
 
         onCreationCompleted: {
             OrientationSupport.supportedDisplayOrientation =
-                SupportedDisplayOrientation.DisplayPortrait;
+                SupportedDisplayOrientation.All;
         }
 
         Container {
