@@ -100,21 +100,32 @@ SearchModel::~SearchModel()
     }
 }
 
-int SearchModel::rowCount(const QModelIndex& index) const
+int SearchModel::childCount(const QVariantList &indexPath) const
 {
-    return m_searchResults.count();
-}
-
-QVariant SearchModel::data(const QModelIndex& index, int role) const
-{
-    if (!index.isValid())
-        return QVariant();
-
-    if (role == 0) {
-        return QVariant(m_searchResults[index.row()]);
+    if (indexPath.isEmpty()) {
+        m_searchresults.count()
     }
 
-    return QVariant();
+    return 0;
+}
+
+bool SearchModel::hasChildren(const QVariantList &indexPath) const
+{
+    if (indexPath.empty()) {
+        return true;
+    }
+
+    return false;
+}
+
+QString SearchModel::itemType(const QVariantList &indexPath) const
+{
+    return "title";
+}
+
+QVariant SearchModel::data(const QVariantList &indexPath) const
+{
+    return QVariant(m_searchResults.at(indexPath.first().toInt()));
 }
 
 void SearchModel::setSearchString(const QString& searchString)
@@ -324,6 +335,9 @@ void SearchModel::fetchUrl()
 
     QString searchString = m_wikiUrlPrefix + "wikipedia.org/w/api.php?action=query&list=search&format=xml&srwhat=text&srlimit=20&srsearch=";
     searchString.append(QUrl::toPercentEncoding(m_searchString, "/?&=:+"));
+
+    // QNetworkConfigurationManager m;
+    //  qDebug() << "Online:" << m.isOnline();
 
     m_searchNetworkReply = m_networkAccessManager.get(QNetworkRequest(QUrl(searchString)));
 

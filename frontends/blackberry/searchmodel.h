@@ -20,15 +20,18 @@
 #ifndef SEARCHMODEL_H
 #define SEARCHMODEL_H
 
+#include <bb/cascades/DataModel>
+
 #include <QTimer>
-#include <QAbstractListModel>
 #include <QStringList>
 #include <QNetworkAccessManager>
+
+using namespace bb::cascades;
 
 class HistoryModel;
 class FavModel;
 
-class SearchModel: public QAbstractListModel
+class SearchModel : public DataModel
 {
     Q_OBJECT
 
@@ -41,8 +44,10 @@ public:
     SearchModel();
     ~SearchModel();
 
-    virtual int rowCount(const QModelIndex& index) const;
-    virtual QVariant data(const QModelIndex& index, int role) const;
+    virtual int childCount(const QVariantList &indexPath) const;
+    virtual bool hasChildren(const QVariantList &indexPath) const;
+    virtual QString itemType(const QVariantList &indexPath) const;
+    virtual QVariant data(const QVariantList &indexPath) const;
 
     void setLanguage(int language);
     int language() const;
