@@ -165,6 +165,12 @@ Page {
 
                     onSubmitted: {
                         searchModel.setSearchString(text);
+
+                        // This should be done in a signal handler for
+                        // itemsChanged
+
+                        wikiScrollView.visible = false
+                        resultsListView.visible = true
                     }
                 }
             }
