@@ -94,16 +94,27 @@ Page {
         // cannot be dismissed otherwise from the Action Bar for instance as the
         // Virtual Keyboard may well cover that part intentionally for good.
 
-        // ActionItem {
-            // id: copyUrlActionItem
-            // title: "Copy Url"
-            // imageSource: "asset:///copy_link.png"
-            // ActionBar.placement: ActionBarPlacement.OnBar
+        ActionItem {
+            id: copyUrlActionItem
+            title: "Copy Url"
+            imageSource: "asset:///copy_link.png"
+            ActionBar.placement: ActionBarPlacement.OnBar
 
-            // onTriggered: {
-                // searchModel.shareArticle(webitem.url);
-            // }
-        // }
+            onTriggered: {
+                searchModel.shareArticle(webitem.url);
+            }
+        },
+        
+        ActionItem {
+            id: emailActionItem
+            title: "Email"
+            imageSource: "asset:///email.png"
+            ActionBar.placement: ActionBarPlacement.OnBar
+
+            onTriggered: {
+                searchModel.shareArticle(webitem.url);
+            }
+        }
     ]
 
     Container {
