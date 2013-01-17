@@ -36,7 +36,7 @@ Page {
         ActionItem {
             id: backActionItem
             title: "Back"
-            imageSource: "asset:///back.png"
+            imageSource: "asset:///previous.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {

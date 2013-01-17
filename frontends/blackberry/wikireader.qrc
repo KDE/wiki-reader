@@ -3,11 +3,13 @@
 
         <file alias="main.qml">assets/main.qml</file>
 
-        <file alias="back.png">../icons/common/back.png</file>
+        <file alias="previous.png">assets/previous.png</file>
+        <file alias="next.png">assets/next.png</file>
+
         <file alias="progress.png">../icons/common/progress.png</file>
-        <file alias="next.png">../icons/common/next.png</file>
         <file alias="home.png">../icons/common/home.png</file>
         <file alias="email.png">../icons/common/email.png</file>
+
         <file alias="search.png">assets/search.png</file>
 
     </qresource>
