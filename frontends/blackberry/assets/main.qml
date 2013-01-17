@@ -225,7 +225,7 @@ Page {
         }
 
         ListView {
-            id: completionListView
+            id: resultsListView
 
             dataModel: searchModel
 
