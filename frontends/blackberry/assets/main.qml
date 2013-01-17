@@ -28,6 +28,10 @@ Page {
         searchBar.visible = false
     }
 
+    titleBar: TitleBar {
+        title : "Wiki reader"
+    }
+
     actions: [
         // The page should be refactored later into two pages
         // 1) WebView + potentially the Action Bar
