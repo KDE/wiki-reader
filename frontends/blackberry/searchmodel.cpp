@@ -102,6 +102,8 @@ SearchModel::~SearchModel()
 
 int SearchModel::childCount(const QVariantList &indexPath)
 {
+    qDebug() << "CPP_CHILD_COUNT_TEST:" << indexPath.size() << indexPath;
+
     if (indexPath.isEmpty()) {
         m_searchResults.count();
     }
@@ -111,6 +113,8 @@ int SearchModel::childCount(const QVariantList &indexPath)
 
 bool SearchModel::hasChildren(const QVariantList &indexPath)
 {
+    qDebug() << "CPP_HAS_CHILDREN_TEST:" << indexPath.size() << indexPath;
+
     if (indexPath.empty()) {
         return true;
     }
@@ -125,6 +129,7 @@ QString SearchModel::itemType(const QVariantList &indexPath)
 
 QVariant SearchModel::data(const QVariantList &indexPath)
 {
+    qDebug() << "CPP_DATA_TEST";
     return QVariant(m_searchResults.at(indexPath.first().toInt()));
 }
 
@@ -172,7 +177,8 @@ void SearchModel::handleSearchComplete(const QString& searchString, QStringList 
         }
     }
 
-    emit itemsChanged(DataModelChangeType::Update, QSharedPointer<DataModel::IndexMapper>());
+    qDebug() << "TEST_CPP_SEARCH_RESULTS:" << m_searchResults;
+    emit itemsChanged(DataModelChangeType::AddRemove, QSharedPointer<DataModel::IndexMapper>());
 }
 
 void SearchModel::showArticle(const QString& title)

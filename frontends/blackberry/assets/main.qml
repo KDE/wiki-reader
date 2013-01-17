@@ -74,7 +74,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
-                languageSelectionDialog.open();
+                // languageSelectionDialog.open();
             }
         },
         
@@ -101,7 +101,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
-                searchModel.shareArticle(webitem.url);
+                searchModel.shareArticle(wikiWebView.url);
             }
         },
         
@@ -112,7 +112,7 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
-                searchModel.shareArticle(webitem.url);
+                searchModel.shareArticle(wikiWebView.url);
             }
         }
 
@@ -123,7 +123,7 @@ Page {
             // ActionBar.placement: ActionBarPlacement.OnBar
 
             // onTriggered: {
-                // searchModel.shareArticle(webitem.url);
+                // searchModel.shareArticle(wikiWebView.url);
             // }
         // }
     ]
@@ -227,12 +227,11 @@ Page {
         ListView {
             id: completionListView
 
-            rootIndexPath: [1]
             dataModel: searchModel
 
             listItemComponents: [
                 ListItemComponent {
-                    type: "item"
+                    type: "title"
 
                     Button {
                         text: ListItem.data
