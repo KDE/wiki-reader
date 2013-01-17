@@ -115,6 +115,17 @@ Page {
                 searchModel.shareArticle(webitem.url);
             }
         }
+
+        // ActionItem {
+            // id: findActionItem
+            // title: "Find"
+            // imageSource: "asset:///find.png"
+            // ActionBar.placement: ActionBarPlacement.OnBar
+
+            // onTriggered: {
+                // searchModel.shareArticle(webitem.url);
+            // }
+        // }
     ]
 
     Container {
@@ -151,22 +162,6 @@ Page {
                     searchModel.setSearchString(text);
                 }
             }
-
-            // Probably, the activity indicator should be used for this progress
-            // as well instead of too much customization. There is
-            // ProgressDialog for instance inside Cascades.
-
-            // ImageView {
-                // id: busyicon
-                // anchors.right: searchbar.right
-                // anchors.rightMargin: 8
-                // anchors.verticalCenter: searchbar.verticalCenter
-                // imageSource: "asset:///images/progress.png"
-                // width: 30
-                // height: 30
-                // visible: searchModel.busy ? true : false
-                // PropertyAnimation on rotation { to: 360; duration: 1000; loops: Animation.Infinite}
-            // }
 
             Button {
                 id: cancelButton
