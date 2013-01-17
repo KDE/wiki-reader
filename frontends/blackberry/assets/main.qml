@@ -129,12 +129,12 @@ Page {
             }
 
             horizontalAlignment: HorizontalAlignment.Right
-            visible: false
+            visible: true
 
             TextField {
                 id: searchTextField
 
-                hintText: "Search the text"
+                hintText: "Enter a Search Term"
 
                 onTextChanging: {
                     searchModel.setSearchString(text);
@@ -243,7 +243,7 @@ Page {
             id: wikiScrollView
 
             verticalAlignment: VerticalAlignment.Fill
-            visible: true
+            visible: false
 
             WebView {
                 id: wikiWebView
