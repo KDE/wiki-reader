@@ -171,6 +171,8 @@ void SearchModel::handleSearchComplete(const QString& searchString, QStringList 
             m_resultsMap->insert(searchString, list);
         }
     }
+
+    emit itemsChanged(DataModelChangeType::Update, QSharedPointer<DataModel::IndexMapper>());
 }
 
 void SearchModel::showArticle(const QString& title)
