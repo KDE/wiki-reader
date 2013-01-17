@@ -76,7 +76,7 @@ Page {
             onTriggered: {
                 languageSelectionDialog.open();
             }
-        }
+        },
         
         // This is to ponder later whether it is a common enough use case to
         // rearrange the layout. There could be a group here because "Find in
