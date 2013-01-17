@@ -28,9 +28,11 @@ Page {
         searchBar.visible = false
     }
 
-    titleBar: TitleBar {
-        title : "Wiki reader"
-    }
+    // It is commented for now as it is just consumes the space uselessly
+
+    // titleBar: TitleBar {
+    //     title : "Wiki reader"
+    // }
 
     actions: [
         // The page should be refactored later into two pages
@@ -235,13 +237,13 @@ Page {
 
             listItemComponents: [
 
-                ListItemComponent {
-                    type: "header"
+                // ListItemComponent {
+                //     type: "header"
                      
-                    Label {
-                        text: ListItemData.title
-                    }
-                },
+                //   Label {
+                //         text: ListItemData.title
+                //     }
+                // },
 
                 ListItemComponent {
                     type: "title"
@@ -258,7 +260,7 @@ Page {
                 // if (title == "Search on google.com") {
                 //     searchModel.searchGoogle(searchbar.text);
                 // } else {
-                //     searchModel.showArticle(title);
+                     searchModel.showArticle(title);
                 // }
             }
                 
