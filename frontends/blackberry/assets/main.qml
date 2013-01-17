@@ -230,23 +230,34 @@ Page {
             dataModel: searchModel
 
             listItemComponents: [
+
+                ListItemComponent {
+                    type: "header"
+                     
+                    Label {
+                        text: ListItemData.title
+                    }
+                },
+
                 ListItemComponent {
                     type: "title"
 
-                    Button {
-                        text: ListItem.data
+                    StandardListItem {
+                        title: ListItemData
 
-                        onClicked: {
-                            if (title == "Search on google.com") {
-                                searchModel.searchGoogle(searchbar.text);
-                            } else {
-                                searchModel.showArticle(title);
-                            }
-                        }
                     }
                 }
+
             ]
 
+            onTriggered: {
+                // if (title == "Search on google.com") {
+                //     searchModel.searchGoogle(searchbar.text);
+                // } else {
+                //     searchModel.showArticle(title);
+                // }
+            }
+                
             onSelectionChanged: {
 
             }
