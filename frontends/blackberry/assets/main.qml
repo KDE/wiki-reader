@@ -36,7 +36,7 @@ Page {
         ActionItem {
             id: backActionItem
             title: "Back"
-            imageSource: "asset:///images/back.png"
+            imageSource: "asset:///back.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
@@ -47,7 +47,7 @@ Page {
         ActionItem {
             id: nextActionItem
             title: "Next"
-            imageSource: "asset:///images/next.png"
+            imageSource: "asset:///next.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
@@ -58,7 +58,7 @@ Page {
         ActionItem {
             id: searchActionItem
             title: "Search"
-            imageSource: "asset:///images/search.png"
+            imageSource: "asset:///search.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
