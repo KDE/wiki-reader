@@ -97,7 +97,7 @@ Page {
         // ActionItem {
             // id: copyUrlActionItem
             // title: "Copy Url"
-            // imageSource: "asset:///images/copy.png"
+            // imageSource: "asset:///copy_link.png"
             // ActionBar.placement: ActionBarPlacement.OnBar
 
             // onTriggered: {
