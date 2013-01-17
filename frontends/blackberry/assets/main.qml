@@ -159,7 +159,14 @@ Page {
                 hintText: "Enter a Search Term"
 
                 onTextChanging: {
-                    searchModel.setSearchString(text);
+                }
+
+                input {
+                    submitKey: SubmitKey.Search;
+
+                    onSubmitted: {
+                        searchModel.setSearchString(text);
+                    }
                 }
             }
 
@@ -222,6 +229,7 @@ Page {
 
             rootIndexPath: [1]
             dataModel: searchModel
+
             listItemComponents: [
                 ListItemComponent {
                     type: "item"
