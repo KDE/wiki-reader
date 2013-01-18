@@ -248,7 +248,7 @@ Page {
                     type: "title"
 
                     StandardListItem {
-                        title: ListItem.data
+                        title: "<html><span style=\"color: white;\">" + ListItem.data + "</span></html>"
                     }
                 }
 
