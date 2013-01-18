@@ -157,6 +157,8 @@ Page {
             TextField {
                 id: searchTextField
 
+                verticalAlignment: VerticalAlignment.Center
+
                 hintText: "Enter a Search Term"
 
                 onTextChanging: {
@@ -179,6 +181,8 @@ Page {
 
             Button {
                 id: cancelButton
+
+                verticalAlignment: VerticalAlignment.Center
 
                 text: "Cancel"
 
@@ -297,8 +301,12 @@ Page {
                 onLoadingChanged: {
                     if (loadRequest.status == WebLoadStatus.Started) {
                         activityIndicator.start();
+                        wikiScrollView.visible = false
+                        resultsListView.visible = false
                     }
                     else if (loadRequest.status == WebLoadStatus.Succeeded) {
+                        wikiScrollView.visible = true
+                        resultsListView.visible = false
                         activityIndicator.stop();
                     }
                     else if (loadRequest.status == WebLoadStatus.Failed) {
@@ -315,8 +323,7 @@ Page {
         ActivityIndicator {
             id: activityIndicator
 
-            preferredWidth: 75
-            preferredHeight: 75
+            verticalAlignment: VerticalAlignment.Fill
 
             running: false
         }

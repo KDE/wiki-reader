@@ -172,6 +172,8 @@ void SearchModel::handleSearchComplete(const QString& searchString, QStringList 
         }
     }
 
+    qDebug() << "Seach results:" << m_searchResults;
+
     emit itemsChanged(DataModelChangeType::AddRemove, QSharedPointer<DataModel::IndexMapper>());
 }
 
