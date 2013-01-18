@@ -157,6 +157,10 @@ Page {
             TextField {
                 id: searchTextField
 
+                layoutProperties: StackLayoutProperties {
+                    spaceQuota: 8
+                }
+
                 verticalAlignment: VerticalAlignment.Center
 
                 hintText: "Enter a Search Term"
@@ -182,9 +186,13 @@ Page {
             Button {
                 id: cancelButton
 
+                layoutProperties: StackLayoutProperties {
+                    spaceQuota: 2
+                }
+
                 verticalAlignment: VerticalAlignment.Center
 
-                text: "Cancel"
+                imageSource: "asset:///cancel.png"
 
                 onClicked: {
                     searchBar.visible = false;
