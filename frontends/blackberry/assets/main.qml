@@ -132,7 +132,10 @@ Page {
     Container {
         id: rootContainer
     
-        topPadding: 20.0
+        topPadding: 15.0
+        leftPadding: 15.0
+        rightPadding: 15.0
+
         background: Color.Black
 
         layout: StackLayout {
