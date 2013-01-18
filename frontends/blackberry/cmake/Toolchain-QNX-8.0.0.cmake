@@ -1,6 +1,7 @@
 #
 # (C) Copyright 2009 Johns Hopkins University (JHU), All Rights
 # Reserved.
+# (C) Copyright 2013 Laszlo Papp <lpapp@kde.org>
 #
 # --- begin cisst license - do not edit ---
 # 
