@@ -37,4 +37,5 @@
     <permission system="true">access_internet</permission>
 
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
+    <env var="CASCADES_THEME" value="dark"/>
 </qnx>
