@@ -63,19 +63,19 @@ Page {
             onTriggered: {
                 searchBar.visible = true;
             }
-        },
+        }
 
-        ActionItem {
-            id: languageActionItem
-            // title: selectionDialog.model.get(searchModel.language).name
-            title: "Languages"
-            imageSource: "asset:///images/language.png"
-            ActionBar.placement: ActionBarPlacement.OnBar
+        // ActionItem {
+        //     id: languageActionItem
+        //     // title: selectionDialog.model.get(searchModel.language).name
+        //     title: "Languages"
+        //     imageSource: "asset:///images/language.png"
+        //     ActionBar.placement: ActionBarPlacement.OnBar
 
-            onTriggered: {
-                // languageSelectionDialog.open();
-            }
-        },
+        //     onTriggered: {
+        //         // languageSelectionDialog.open();
+        //     }
+        // },
         
         // This is to ponder later whether it is a common enough use case to
         // rearrange the layout. There could be a group here because "Find in
@@ -93,37 +93,37 @@ Page {
         // cannot be dismissed otherwise from the Action Bar for instance as the
         // Virtual Keyboard may well cover that part intentionally for good.
 
-        ActionItem {
-            id: copyUrlActionItem
-            title: "Copy Url"
-            imageSource: "asset:///copy_link.png"
-            ActionBar.placement: ActionBarPlacement.OnBar
+        // ActionItem {
+        //     id: copyUrlActionItem
+        //     title: "Copy Url"
+        //     imageSource: "asset:///copy_link.png"
+        //     ActionBar.placement: ActionBarPlacement.OnBar
 
-            onTriggered: {
-                searchModel.shareArticle(wikiWebView.url);
-            }
-        },
-        
-        ActionItem {
-            id: emailActionItem
-            title: "Email"
-            imageSource: "asset:///email.png"
-            ActionBar.placement: ActionBarPlacement.OnBar
-
-            onTriggered: {
-                searchModel.shareArticle(wikiWebView.url);
-            }
-        }
+        //     onTriggered: {
+        //         searchModel.shareArticle(wikiWebView.url);
+        //     }
+        // },
 
         // ActionItem {
-            // id: findActionItem
-            // title: "Find"
-            // imageSource: "asset:///find.png"
-            // ActionBar.placement: ActionBarPlacement.OnBar
+        //     id: findActionItem
+        //     title: "Find"
+        //     imageSource: "asset:///find.png"
+        //     ActionBar.placement: ActionBarPlacement.OnBar
 
-            // onTriggered: {
-                // searchModel.shareArticle(wikiWebView.url);
-            // }
+        //     onTriggered: {
+        //         // searchModel.shareArticle(wikiWebView.url);
+        //     }
+        // },
+        // 
+        // ActionItem {
+        //     id: emailActionItem
+        //     title: "Email"
+        //     imageSource: "asset:///email.png"
+        //     ActionBar.placement: ActionBarPlacement.OnBar
+
+        //     onTriggered: {
+        //         searchModel.shareArticle(wikiWebView.url);
+        //     }
         // }
     ]
 
@@ -249,7 +249,6 @@ Page {
 
                     StandardListItem {
                         title: ListItem.data
-
                     }
                 }
 
