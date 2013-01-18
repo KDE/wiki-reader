@@ -118,36 +118,15 @@ Page {
         InvokeActionItem {
             id: shareActionItem
             title: "Share"
-            imageSource: "images/share.png"
+            imageSource: "asset:///share.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             query {
                 mimeType: "text/plain"
+                uri: wikiWebView.url
                 invokeActionId: "bb.action.SHARE"
             }
         }
-        
-        // ActionItem {
-        //     id: shareActionItem
-        //     title: "Share"
-        //     imageSource: "asset:///share.png"
-        //     ActionBar.placement: ActionBarPlacement.OnBar
-
-        //     onTriggered: {
-        //         searchModel.shareArticle(wikiWebView.url);
-        //     }
-        // }
-        //
-        // ActionItem {
-        //     id: emailActionItem
-        //     title: "Email"
-        //     imageSource: "asset:///email.png"
-        //     ActionBar.placement: ActionBarPlacement.OnBar
-
-        //     onTriggered: {
-        //         searchModel.shareArticle(wikiWebView.url);
-        //     }
-        // }
     ]
 
     Container {
