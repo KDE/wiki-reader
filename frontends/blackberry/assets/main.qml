@@ -63,7 +63,7 @@ Page {
             onTriggered: {
                 searchBar.visible = true;
             }
-        }
+        },
 
         // ActionItem {
         //     id: languageActionItem
@@ -114,7 +114,30 @@ Page {
         //         // searchModel.shareArticle(wikiWebView.url);
         //     }
         // },
-        // 
+        
+        InvokeActionItem {
+            id: shareActionItem
+            title: "Share"
+            imageSource: "images/share.png"
+            ActionBar.placement: ActionBarPlacement.OnBar
+
+            query {
+                mimeType: "text/plain"
+                invokeActionId: "bb.action.SHARE"
+            }
+        }
+        
+        // ActionItem {
+        //     id: shareActionItem
+        //     title: "Share"
+        //     imageSource: "asset:///share.png"
+        //     ActionBar.placement: ActionBarPlacement.OnBar
+
+        //     onTriggered: {
+        //         searchModel.shareArticle(wikiWebView.url);
+        //     }
+        // }
+        //
         // ActionItem {
         //     id: emailActionItem
         //     title: "Email"
