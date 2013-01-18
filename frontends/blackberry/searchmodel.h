@@ -69,7 +69,6 @@ public Q_SLOTS:
     void showArticle(const QString& title);
     void showArticle(int index);
     void searchGoogle(const QString& str);
-    void shareArticle(const QString& url);
 
 Q_SIGNALS:
 

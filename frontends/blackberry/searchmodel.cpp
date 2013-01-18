@@ -195,14 +195,6 @@ void SearchModel::showArticle(int index)
     setUrl(urlString);
 }
 
-void SearchModel::shareArticle(const QString& url)
-{
-    QString urlString = url;
-    urlString = "mailto:?subject=Check this article&body=I found an interesting article. Check it out.\n "+ urlString;
-
-    QDesktopServices::openUrl(QUrl(urlString));
-}
-
 void SearchModel::searchGoogle(const QString& string)
 {
     QString trimmedString = string.trimmed();
