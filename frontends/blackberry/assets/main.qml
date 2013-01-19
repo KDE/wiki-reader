@@ -307,6 +307,7 @@ Page {
                 scrollViewProperties {
                     pinchToZoomEnabled: true
                     scrollMode: ScrollMode.Both
+                    initialScalingMethod: ScalingMethod.AspectFit
                 }
 
                 verticalAlignment: VerticalAlignment.Fill
@@ -368,9 +369,7 @@ Page {
                     id: activityIndicator
 
                     minWidth: 200.0
-                    preferredWidth: 200.0
                     minHeight: 200.0
-                    preferredHeight: 200.0
                 }
             }
         }
