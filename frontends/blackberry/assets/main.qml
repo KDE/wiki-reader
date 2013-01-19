@@ -344,10 +344,10 @@ Page {
         ActivityIndicator {
             id: activityIndicator
 
+            horizontalAlignment: HorizontalAlignment.Center
             verticalAlignment: VerticalAlignment.Fill
 
             running: false
         }
-
     }
 }
