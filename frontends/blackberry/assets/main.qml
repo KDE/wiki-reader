@@ -367,10 +367,10 @@ Page {
                 ActivityIndicator {
                     id: activityIndicator
 
-                    horizontalAlignment: HorizontalAlignment.Center
-                    verticalAlignment: VerticalAlignment.Center
-
-                    running: false
+                    minWidth: 200.0
+                    preferredWidth: 200.0
+                    minHeight: 200.0
+                    preferredHeight: 200.0
                 }
             }
         }
