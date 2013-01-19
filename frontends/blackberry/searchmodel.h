@@ -37,7 +37,6 @@ class SearchModel : public DataModel
 
     Q_PROPERTY(QString url READ url WRITE setUrl NOTIFY urlChanged)
     Q_PROPERTY(bool busy READ busy WRITE setBusy NOTIFY busyChanged)
-    Q_PROPERTY(QString errorString READ errorString WRITE setErrorString NOTIFY errorChanged)
     Q_PROPERTY(int language READ language WRITE setLanguage NOTIFY languageChanged)
 
 public:
@@ -60,9 +59,6 @@ public:
     void setBusy(bool state);
     bool busy() const;
 
-    void setErrorString(const QString& errorString);
-    QString errorString() const;
-
     Q_INVOKABLE QString googleSearchString() const;
 
 public Q_SLOTS:
@@ -77,7 +73,6 @@ Q_SIGNALS:
     void urlChanged();
     void canQuit();
     void busyChanged();
-    void errorChanged();
     void languageChanged();
 
     void fetchFinished(const QString& searchString, QStringList data);
@@ -103,7 +98,6 @@ private:
 
     QString m_searchString;
     QString m_url;
-    QString m_errorString;
     QString m_wikiUrlPrefix;
 
     int m_language;

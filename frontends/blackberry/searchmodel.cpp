@@ -39,7 +39,6 @@ SearchModel::SearchModel()
     , m_resultsMap(new QVariantMap())
     , m_searchString("")
     , m_url("")
-    , m_errorString("")
     , m_wikiUrlPrefix("http://en.")
     , m_language(0)
     , m_busy(false)
@@ -327,17 +326,6 @@ void SearchModel::setBusy(bool state)
     emit busyChanged();
 }
 
-void SearchModel::setErrorString(const QString& errorString)
-{
-    m_errorString = errorString;
-    emit errorChanged();
-}   
-
-QString SearchModel::errorString() const
-{
-    return m_errorString;
-}
-
 void SearchModel::fetchUrl()
 {
     if (m_searchNetworkReply != NULL) {
@@ -391,7 +379,7 @@ void SearchModel::httpFinished()
             m_timer.start();
             return;
         } else {
-            setErrorString("Internet not accessible.\nTry Again Later.");
+            // TODO: Perhaps proper error management later?
             setBusy(false);
             return;
         }
