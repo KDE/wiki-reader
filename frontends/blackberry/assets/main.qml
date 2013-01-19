@@ -295,7 +295,7 @@ Page {
 
             scrollViewProperties {
                 pinchToZoomEnabled: true
-
+                scrollMode: ScrollMode.Both
             }
 
             verticalAlignment: VerticalAlignment.Fill
@@ -331,9 +331,14 @@ Page {
                 }
             }
 
-            scrollViewProperties {
-                scrollMode: ScrollMode.Both
-            }
+            gestureHandlers: [
+                DoubleTapHandler {
+                    onDoubleTapped: {
+                        wikiScrollView.resetViewableArea();
+                    }
+                }
+            ]
+
         }
 
         ActivityIndicator {
