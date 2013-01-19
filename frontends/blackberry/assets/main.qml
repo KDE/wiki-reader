@@ -352,13 +352,26 @@ Page {
 
             }
 
-            ActivityIndicator {
-                id: activityIndicator
+            // This is necessary to place the activity indicator horizontally
+            // and vertically in the middle
+
+            Container {
+                id: activityContainer
+                
+                layout: StackLayout {                        
+                }
 
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
+                
+                ActivityIndicator {
+                    id: activityIndicator
 
-                running: false
+                    horizontalAlignment: HorizontalAlignment.Center
+                    verticalAlignment: VerticalAlignment.Center
+
+                    running: false
+                }
             }
         }
     }
