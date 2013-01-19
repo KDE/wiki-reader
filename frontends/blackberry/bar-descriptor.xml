@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8' standalone='no'?>
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>com.kde.WikiReader</id>
-    <name>WikiReader</name>
+    <name>Wiki Reader</name>
     <versionNumber>1.0.0</versionNumber>
     <description>Wikipedia reader</description>
     <initialWindow>
@@ -12,8 +12,8 @@
     <icon>
         <image>wikireader114.png</image>
     </icon>
-    <author>Symbio Software Oy</author>
-    <authorId>gYAAgDZL9Yn-mVIbTC_wAsMcnU8</authorId>
+    <author>Laszlo Papp</author>
+    <authorId>gYAAgA1TDd8u1elTKGv_D0MZ9UU</authorId>
     <category>core.media</category>
 
     <configuration id="com.qnx.qcc.toolChain.1485069140" name="Device-Debug">
