@@ -1,5 +1,5 @@
 #################################################################################
-# This file is part of the Wikireader project
+# This file is part of the WikiReader project
 # Copyright (c) 2013 Laszlo Papp <lpapp@kde.org>
 #
 # This library is free software; you can redistribute it and/or
@@ -18,9 +18,9 @@
 #/
 
 cmake_minimum_required(VERSION 2.8.9)
-project(Wikireader)
+project(WikiReader)
 
-option(BUILD_WIKIREADER_BLACKBERRY "Build Wikireader for Blackberry 10" ON)
+option(BUILD_WIKIREADER_BLACKBERRY "Build WikiReader for Blackberry 10" ON)
 
 ###### Frontends ######
 add_subdirectory(frontends)
