@@ -155,6 +155,11 @@ void SearchModel::setSearchString(const QString& searchString)
     m_timer.start();
 }
 
+QString SearchModel::googleSearchString() const
+{
+    return QString("Search on http://google.com");
+}
+
 void SearchModel::handleSearchComplete(const QString& searchString, QStringList list, bool cachedResults)
 {
     m_searchResults.clear();
@@ -163,7 +168,7 @@ void SearchModel::handleSearchComplete(const QString& searchString, QStringList 
     }
 
     if (!m_searchString.isEmpty()) {
-        m_searchResults.append(QString("Search on http://google.com"));
+        m_searchResults.append(googleSearchString());
     }
 
     setBusy(false);
@@ -175,8 +180,6 @@ void SearchModel::handleSearchComplete(const QString& searchString, QStringList 
             m_resultsMap->insert(searchString, list);
         }
     }
-
-    qDebug() << "Seach results:" << m_searchResults;
 
     emit itemsChanged(DataModelChangeType::AddRemove, QSharedPointer<DataModel::IndexMapper>());
 }

@@ -63,6 +63,8 @@ public:
     void setErrorString(const QString& errorString);
     QString errorString() const;
 
+    Q_INVOKABLE QString googleSearchString() const;
+
 public Q_SLOTS:
 
     void setSearchString(const QString& searchString);
