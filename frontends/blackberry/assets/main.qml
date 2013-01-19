@@ -251,7 +251,11 @@ Page {
         // by Cascades QML either.
 
         Container {
-            
+            id: overlappingControlsContainer
+
+            preferredWidth: 768.0
+            preferredHeight: 1180.0
+
             layout: DockLayout {
             }
             
@@ -284,17 +288,16 @@ Page {
                 ]
 
                 onTriggered: {
-                    if (indexPath[0] == 0) {
+                    if (dataModel.data(indexPath) == searchModel.googleSearchString()) {
                         searchModel.searchGoogle(searchTextField.text);
-
                     } else {
-                        searchModel.showArticle(dataModel.data(indexPath[0]));
+                        searchModel.showArticle(indexPath[0]);
 
                         // This should be done in a signal handler for urlChanged
 
-                        wikiScrollView.visible = true
-                        searchBar.visible = false
-                        resultsListView.visible = false
+                       wikiScrollView.visible = true
+                       searchBar.visible = false
+                       resultsListView.visible = false
                     }
                 }
                     
@@ -375,7 +378,7 @@ Page {
                     }
                     
                     onStopped: {
-                        activityIndicator.visible = false
+                        activityIndicatorContainer.visible = false
                         wikiScrollView.visible = true
                         resultsListView.visible = false
                     }
