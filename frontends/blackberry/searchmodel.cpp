@@ -19,10 +19,6 @@
 
 #include "searchmodel.h"
 
-#ifdef Q_OS_BLACKBERRY
-#include <bb/cascades/InvokeActionItem>
-#endif
-
 #include <QDesktopServices>
 
 #include <QDomDocument>
@@ -214,15 +210,7 @@ void SearchModel::searchGoogle(const QString& string)
 
     QString urlString = "http://www.google.com/m?q=" + percentEncodingByteArray.replace(' ', '+');
 
-#ifndef Q_OS_BLACKBERRY
     QDesktopServices::openUrl(QUrl(urlString));
-#else
-    bb::cascades::InvokeActionItem* pInvokeActionItem(bb::cascades::InvokeActionItem::create(
-      bb::cascades::InvokeQuery::create()
-        .parent(this)
-        .uri(urlString));
-#endif
-
 }
 
 QString SearchModel::languageToString() const
