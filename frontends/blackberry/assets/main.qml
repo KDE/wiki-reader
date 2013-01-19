@@ -284,17 +284,18 @@ Page {
                 ]
 
                 onTriggered: {
-                    // if (title == "Search on google.com") {
-                    //     searchModel.searchGoogle(searchbar.text);
-                    // } else {
-                        searchModel.showArticle(indexPath[0]);
+                    if (indexPath[0] == 0) {
+                        searchModel.searchGoogle(searchTextField.text);
+
+                    } else {
+                        searchModel.showArticle(dataModel.data(indexPath[0]));
 
                         // This should be done in a signal handler for urlChanged
 
                         wikiScrollView.visible = true
                         searchBar.visible = false
                         resultsListView.visible = false
-                    // }
+                    }
                 }
                     
                 onSelectionChanged: {
