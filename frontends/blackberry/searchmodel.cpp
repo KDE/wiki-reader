@@ -159,7 +159,7 @@ void SearchModel::handleSearchComplete(const QString& searchString, QStringList 
     }
 
     if (!m_searchString.isEmpty()) {
-        m_searchResults.append(QString("Search on google.com").toAscii());
+        m_searchResults.append(QString("Search on http://google.com"));
     }
 
     setBusy(false);
@@ -207,6 +207,7 @@ void SearchModel::searchGoogle(const QString& string)
     QByteArray percentEncodingByteArray = QUrl::toPercentEncoding(trimmedString, " ");
 
     QString urlString = "http://www.google.com/m?q=" + percentEncodingByteArray.replace(' ', '+');
+
     QDesktopServices::openUrl(QUrl(urlString));
 }
 
