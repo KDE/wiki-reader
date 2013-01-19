@@ -247,7 +247,8 @@ Page {
         }
 
         // Dock Container is the way to hold overlapping controls with
-        // Cascades, at least as of now
+        // Cascades, at least for now. There is no 'z' index support establish
+        // by Cascades QML either.
 
         Container {
             
@@ -317,7 +318,6 @@ Page {
                     id: wikiWebView
 
                     url: searchModel.url
-                    // z: 1
 
                     settings.viewport: {
                         // "width" : "device-width"
