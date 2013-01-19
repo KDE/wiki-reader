@@ -293,6 +293,11 @@ Page {
         ScrollView {
             id: wikiScrollView
 
+            scrollViewProperties {
+                pinchToZoomEnabled: true
+
+            }
+
             verticalAlignment: VerticalAlignment.Fill
             visible: false
 
