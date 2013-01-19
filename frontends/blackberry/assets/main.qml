@@ -246,108 +246,120 @@ Page {
             // }
         }
 
-        ListView {
-            id: resultsListView
+        // Dock Container is the way to hold overlapping controls with
+        // Cascades, at least as of now
 
-            dataModel: searchModel
+        Container {
+            
+            layout: DockLayout {
+            }
+            
+            verticalAlignment: VerticalAlignment.Top
+            horizontalAlignment: HorizontalAlignment.Left
 
-            listItemComponents: [
+            ListView {
+                id: resultsListView
 
-                // ListItemComponent {
-                //     type: "header"
-                     
-                //   Label {
-                //         text: ListItemData.title
-                //     }
-                // },
+                dataModel: searchModel
 
-                ListItemComponent {
-                    type: "title"
+                listItemComponents: [
 
-                    StandardListItem {
-                        title: ListItem.data
+                    // ListItemComponent {
+                    //     type: "header"
+                         
+                    //   Label {
+                    //         text: ListItemData.title
+                    //     }
+                    // },
+
+                    ListItemComponent {
+                        type: "title"
+
+                        StandardListItem {
+                            title: ListItem.data
+                        }
                     }
-                }
 
-            ]
+                ]
 
-            onTriggered: {
-                // if (title == "Search on google.com") {
-                //     searchModel.searchGoogle(searchbar.text);
-                // } else {
-                    searchModel.showArticle(indexPath[0]);
+                onTriggered: {
+                    // if (title == "Search on google.com") {
+                    //     searchModel.searchGoogle(searchbar.text);
+                    // } else {
+                        searchModel.showArticle(indexPath[0]);
 
-                    // This should be done in a signal handler for urlChanged
+                        // This should be done in a signal handler for urlChanged
 
-                    wikiScrollView.visible = true
-                    searchBar.visible = false
-                    resultsListView.visible = false
-                // }
-            }
-                
-            onSelectionChanged: {
-
-            }
-        }
-
-        ScrollView {
-            id: wikiScrollView
-
-            scrollViewProperties {
-                pinchToZoomEnabled: true
-                scrollMode: ScrollMode.Both
-            }
-
-            verticalAlignment: VerticalAlignment.Fill
-            visible: false
-
-            WebView {
-                id: wikiWebView
-
-                url: searchModel.url
-                // z: 1
-
-                settings.viewport: {
-                    // "width" : "device-width"
-                    // "height": "devide-height"
-                    // defaultFontSize: searchModel.fontSize
-                    "initial-scale" : 1.0
-                }
-                
-                onLoadingChanged: {
-                    if (loadRequest.status == WebLoadStatus.Started) {
-                        activityIndicator.start();
-                        wikiScrollView.visible = false
-                        resultsListView.visible = false
-                    }
-                    else if (loadRequest.status == WebLoadStatus.Succeeded) {
                         wikiScrollView.visible = true
+                        searchBar.visible = false
                         resultsListView.visible = false
-                        activityIndicator.stop();
-                    }
-                    else if (loadRequest.status == WebLoadStatus.Failed) {
-                        activityIndicator.stop();
-                    }
+                    // }
+                }
+                    
+                onSelectionChanged: {
+
                 }
             }
 
-            gestureHandlers: [
-                DoubleTapHandler {
-                    onDoubleTapped: {
-                        wikiScrollView.resetViewableArea();
+            ScrollView {
+                id: wikiScrollView
+
+                scrollViewProperties {
+                    pinchToZoomEnabled: true
+                    scrollMode: ScrollMode.Both
+                }
+
+                verticalAlignment: VerticalAlignment.Fill
+                visible: false
+
+                WebView {
+                    id: wikiWebView
+
+                    url: searchModel.url
+                    // z: 1
+
+                    settings.viewport: {
+                        // "width" : "device-width"
+                        // "height": "devide-height"
+                        // defaultFontSize: searchModel.fontSize
+                        "initial-scale" : 1.0
+                    }
+                    
+                    onLoadingChanged: {
+                        if (loadRequest.status == WebLoadStatus.Started) {
+                            activityIndicator.start();
+                            wikiScrollView.visible = false
+                            resultsListView.visible = false
+                        }
+                        else if (loadRequest.status == WebLoadStatus.Succeeded) {
+                            wikiScrollView.visible = true
+                            resultsListView.visible = false
+                            activityIndicator.stop();
+                        }
+                        else if (loadRequest.status == WebLoadStatus.Failed) {
+                            activityIndicator.stop();
+                        }
                     }
                 }
-            ]
 
-        }
+                gestureHandlers: [
+                    DoubleTapHandler {
+                        onDoubleTapped: {
+                            wikiScrollView.resetViewableArea();
+                        }
+                    }
+                ]
 
-        ActivityIndicator {
-            id: activityIndicator
+            }
 
-            horizontalAlignment: HorizontalAlignment.Center
-            verticalAlignment: VerticalAlignment.Fill
+            ActivityIndicator {
+                id: activityIndicator
 
-            running: false
+                horizontalAlignment: HorizontalAlignment.Center
+                verticalAlignment: VerticalAlignment.Center
+
+                running: false
+            }
         }
     }
 }
