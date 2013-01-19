@@ -329,12 +329,8 @@ Page {
                     onLoadingChanged: {
                         if (loadRequest.status == WebLoadStatus.Started) {
                             activityIndicator.start();
-                            wikiScrollView.visible = false
-                            resultsListView.visible = false
                         }
                         else if (loadRequest.status == WebLoadStatus.Succeeded) {
-                            wikiScrollView.visible = true
-                            resultsListView.visible = false
                             activityIndicator.stop();
                         }
                         else if (loadRequest.status == WebLoadStatus.Failed) {
@@ -357,7 +353,7 @@ Page {
             // and vertically in the middle
 
             Container {
-                id: activityContainer
+                id: activityIndicatorContainer
                 
                 layout: StackLayout {                        
                 }
@@ -370,6 +366,18 @@ Page {
 
                     minWidth: 200.0
                     minHeight: 200.0
+
+                    onStarted: {
+                        activityIndicator.visible = true
+                        wikiScrollView.visible = false
+                        resultsListView.visible = false
+                    }
+                    
+                    onStopped: {
+                        activityIndicator.visible = false
+                        wikiScrollView.visible = true
+                        resultsListView.visible = false
+                    }
                 }
             }
         }
