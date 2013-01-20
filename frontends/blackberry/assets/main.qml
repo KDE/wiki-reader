@@ -35,7 +35,7 @@ Page {
         ActionItem {
             id: backActionItem
             title: "Back"
-            imageSource: "asset:///previous.png"
+            imageSource: "asset:///images/previous.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
@@ -46,7 +46,7 @@ Page {
         ActionItem {
             id: nextActionItem
             title: "Next"
-            imageSource: "asset:///next.png"
+            imageSource: "asset:///images/next.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
@@ -57,7 +57,7 @@ Page {
         ActionItem {
             id: searchActionItem
             title: "Search"
-            imageSource: "asset:///search.png"
+            imageSource: "asset:///images/search.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
@@ -118,7 +118,7 @@ Page {
         InvokeActionItem {
             id: shareActionItem
             title: "Share"
-            imageSource: "asset:///share.png"
+            imageSource: "asset:///images/share.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             query {
@@ -195,7 +195,7 @@ Page {
 
                 verticalAlignment: VerticalAlignment.Center
 
-                imageSource: "asset:///cancel.png"
+                imageSource: "asset:///images/cancel.png"
 
                 onClicked: {
                     searchBar.visible = false;

@@ -3,16 +3,16 @@
 
         <file alias="main.qml">assets/main.qml</file>
 
-        <file alias="previous.png">assets/previous.png</file>
-        <file alias="next.png">assets/next.png</file>
+        <file alias="previous.png">assets/images/previous.png</file>
+        <file alias="next.png">assets/images/next.png</file>
 
-        <file alias="search.png">assets/search.png</file>
-        <file alias="cancel.png">assets/cancel.png</file>
+        <file alias="search.png">assets/images/search.png</file>
+        <file alias="cancel.png">assets/images/cancel.png</file>
 
-        <file alias="copy_link.png">assets/copy_link.png</file>
-        <file alias="email.png">assets/email.png</file>
+        <file alias="copy_link.png">assets/images/copy_link.png</file>
+        <file alias="email.png">assets/images/email.png</file>
 
-        <file alias="email.png">assets/share.png</file>
+        <file alias="email.png">assets/images/share.png</file>
 
     </qresource>
 </RCC>
