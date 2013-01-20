@@ -21,6 +21,8 @@ import bb.cascades 1.0
 
 Page {
 
+    id: mainPage
+
     // It is commented for now as it is just consumes the space uselessly
 
     // titleBar: TitleBar {
@@ -132,6 +134,16 @@ Page {
     Container {
         id: rootContainer
     
+        animations: [
+            TranslateTransition {
+                id: userInteractionDelay
+                delay: 3000
+                onEnded: {
+                    mainPage.actionBarVisibility = ChromeVisibility.Hidden;
+                }
+            }
+        ] 
+
         topPadding: 15.0
         leftPadding: 15.0
         rightPadding: 15.0
@@ -335,6 +347,7 @@ Page {
                             activityIndicator.start();
                         }
                         else if (loadRequest.status == WebLoadStatus.Succeeded) {
+                            userInteractionDelay.play();
                             activityIndicator.stop();
                         }
                         else if (loadRequest.status == WebLoadStatus.Failed) {
@@ -350,6 +363,18 @@ Page {
                         }
                     }
                 ]
+
+                onTouch: {
+                    if (mainPage.actionBarVisibility == ChromeVisibility.Default) {
+                        if (userInteractionDelay.isPlaying()) {
+                            userInteractionDelay.stop();
+                        }
+
+                        userInteractionDelay.play();
+                    }
+
+                    mainPage.actionBarVisibility = ChromeVisibility.Default;
+                }
 
             }
 
