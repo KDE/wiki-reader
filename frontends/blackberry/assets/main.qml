@@ -365,7 +365,7 @@ Page {
                 ]
 
                 onTouch: {
-                    if (mainPage.actionBarVisibility == ChromeVisibility.Default) {
+                    if (mainPage.actionBarVisibility != ChromeVisibility.Hidden) {
                         if (userInteractionDelay.isPlaying()) {
                             userInteractionDelay.stop();
                         }
