@@ -2,7 +2,7 @@
 <qnx xmlns="http://www.qnx.com/schemas/application/1.0">
     <id>com.kde.WikiReader</id>
     <name>Wiki Reader</name>
-    <versionNumber>1.0.0</versionNumber>
+    <versionNumber>1.0.1</versionNumber>
     <description>Wikipedia reader</description>
     <initialWindow>
         <systemChrome>none</systemChrome>
@@ -34,7 +34,6 @@
     </asset>
 
     <permission system="true">run_native</permission>
-    <permission system="true">access_internet</permission>
 
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
     <env var="CASCADES_THEME" value="dark"/>
